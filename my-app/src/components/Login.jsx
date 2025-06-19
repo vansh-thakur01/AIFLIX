@@ -2,17 +2,13 @@ import { BasicBgWithHeader } from "./BasicBgWithHeader";
 import Header from "./Header";
 import { useState, useRef } from "react";
 import { checkValidOnBlur } from "../utils/checkValidInfoOfSignIn";
+import { use } from "react";
 
 export const Login = () => {
   let [signup, setSignup] = useState(false);
   const [showPswd, setShowPswd] = useState(false);
-  // const [emailInValid, setEmailInValid] = useState(true);
-  // const [pswdValid, setPswdValid] = useState(true);
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPswd, setErrorPswd] = useState(false);
-
-  const email = useRef();
-  const password = useRef();
 
   const handelBlur = (e) => {
     checkValidOnBlur(e,setErrorEmail,setErrorPswd);
@@ -39,13 +35,10 @@ export const Login = () => {
               ></input>
             )}
             <input
-              ref={email}
               type="text"
               name="email"
               placeholder="Email Address"
-              className={`w-full px-5 py-4 mb-3 border-2 bg-gray-950 ${
-                errorEmail ? "border-red-500" : "border-gray-400"
-              } rounded text-white text-[17px] focus:outline-none`}
+              className={`w-full px-5 py-4 mb-3 border-2 bg-gray-950 ${ errorEmail ? "border-red-500" : "border-gray-400" } rounded text-white text-[17px] focus:outline-none`}
               onFocus={() => setErrorEmail(false)}
               onBlur={handelBlur}
             ></input>
@@ -53,13 +46,11 @@ export const Login = () => {
               {errorEmail && "⨂ Please enter a valid email address."}
             </div>
             <div
-              onClick={() => password.current.focus()}
               className={`relative w-full px-5 py-4 mt-4 border-2 bg-gray-950 ${
                 errorPswd ? "border-red-500" : "border-gray-400"
               } rounded flex justify-between`}
-            >
+              >
               <input
-                ref={password}
                 type={showPswd ? "text" : "password"}
                 name="pswd"
                 placeholder="Passowrd"
