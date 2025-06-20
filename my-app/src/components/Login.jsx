@@ -2,16 +2,41 @@ import { BasicBgWithHeader } from "./BasicBgWithHeader";
 import Header from "./Header";
 import { useState, useRef } from "react";
 import { checkValidOnBlur } from "../utils/checkValidInfoOfSignIn";
-import { use } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { signIn as signInHelper, signUp as signUpHelper } from "../utils/signInUp";
+import { auth } from "../utils/fireBase";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   let [signup, setSignup] = useState(false);
   const [showPswd, setShowPswd] = useState(false);
-  const [errorEmail, setErrorEmail] = useState(false);
-  const [errorPswd, setErrorPswd] = useState(false);
+  const [validEmailEvent, setvalidEmailEvent] = useState(true);
+  const [validPswdEvent, setvalidPswdEvent] = useState(true);
+  const navigate = useNavigate();
 
   const handelBlur = (e) => {
-    checkValidOnBlur(e,setErrorEmail,setErrorPswd);
+    checkValidOnBlur(e,setvalidEmailEvent,setvalidPswdEvent);
+  }
+  
+  const handelSignInSignUp = () => {
+    checkValidOnBlur((typeof validEmailEvent !== "object" ? "email" : validEmailEvent), setvalidEmailEvent, setvalidPswdEvent)
+    checkValidOnBlur((typeof validPswdEvent !== "object" ? "pswd" : validPswdEvent), setvalidEmailEvent, setvalidPswdEvent);
+
+    if(!validEmailEvent || !validPswdEvent) return;
+
+    const email = validEmailEvent?.target?.value;
+    const paswd = validPswdEvent?.target?.value;
+    console.log(navigate);
+    
+    if(!signup && email && paswd){
+      signUpHelper(auth, email, paswd, navigate).then(()=>navigate("/browse"));
+
+    }
+    
+    else if(signup && email && paswd){
+      signInHelper(auth, email, paswd, navigate).then(()=>navigate("/browse"));
+    }
+
   }
 
   const toggleSignInForm = () => {
@@ -38,16 +63,16 @@ export const Login = () => {
               type="text"
               name="email"
               placeholder="Email Address"
-              className={`w-full px-5 py-4 mb-3 border-2 bg-gray-950 ${ errorEmail ? "border-red-500" : "border-gray-400" } rounded text-white text-[17px] focus:outline-none`}
-              onFocus={() => setErrorEmail(false)}
+              className={`w-full px-5 py-4 mb-3 border-2 bg-gray-950 ${ validEmailEvent == null ? "border-red-500" : "border-gray-400" } rounded text-white text-[17px] focus:outline-none`}
+              onFocus={() => setvalidEmailEvent(true)}
               onBlur={handelBlur}
             ></input>
             <div className="text-red-500 text-[15px] h-1 flex items-center">
-              {errorEmail && "⨂ Please enter a valid email address."}
+              {validEmailEvent == null && "⨂ Please enter a valid email address."}
             </div>
             <div
               className={`relative w-full px-5 py-4 mt-4 border-2 bg-gray-950 ${
-                errorPswd ? "border-red-500" : "border-gray-400"
+                validPswdEvent ==  null ? "border-red-500" : "border-gray-400"
               } rounded flex justify-between`}
               >
               <input
@@ -55,7 +80,7 @@ export const Login = () => {
                 name="pswd"
                 placeholder="Passowrd"
                 className="text-white text-[17px] outline-none focus:ring-0 focus:outline-none flex-1"
-                onFocus={() => setErrorPswd(false)}
+                onFocus={() => setvalidPswdEvent(true)}
                 onBlur={handelBlur}
               ></input>
               <button
@@ -67,23 +92,24 @@ export const Login = () => {
               </button>
             </div>
             <div className="text-red-500 text-[15px] h-7 flex items-center ">
-              {errorPswd && "⨂ Password must contain 6 to 16 charaters."}
+              {validPswdEvent == null && "⨂ Password must contain 6 to 16 charaters."}
             </div>
           </form>
           <button
             type="submit"
             className="mb-10 w-full px-5 py-3 bg-red-700 rounded font-semibold text-white text-lg opacity-100"
+            onClick={handelSignInSignUp}
           >
             {signup ? "Sign Up" : "Sign In"}
           </button>
           <div className="text-[17px] ">
             <p className="text-blue-100">
-              New to Netflix?
+              {signup ? "Already have account?" :"New to Netflix?"}
               <span
                 onClick={toggleSignInForm}
                 className="font-bold cursor-pointer text-white"
               >
-                Sign up now.
+                {signup ? "Sign In." : "Sign up now."}
               </span>
             </p>
           </div>
