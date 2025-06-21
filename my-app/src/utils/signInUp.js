@@ -1,8 +1,11 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 
-export const signIn = async function(auth, email, password,navigate){
+
+export const signIn = async function(auth, name, email, password){
     try{
+        console.log(auth);
         const {user} = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(user, { displayName: name});
         return user;
     }
     catch(error){
@@ -10,7 +13,7 @@ export const signIn = async function(auth, email, password,navigate){
         const errorMessage = error.message;
         console.log(errorMessage,errorCode);        
     }
-
+    
 }
 
 export const signUp = async function(auth, email, password, navigate){

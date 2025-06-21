@@ -2,42 +2,54 @@ import { BasicBgWithHeader } from "./BasicBgWithHeader";
 import Header from "./Header";
 import { useState, useRef } from "react";
 import { checkValidOnBlur } from "../utils/checkValidInfoOfSignIn";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { signIn as signInHelper, signUp as signUpHelper } from "../utils/signInUp";
+import { getAuth, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
+import { signIn as signInHelper,signUp as signUpHelper} from "../utils/signInUp";
 import { auth } from "../utils/fireBase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 export const Login = () => {
   let [signup, setSignup] = useState(false);
   const [showPswd, setShowPswd] = useState(false);
   const [validEmailEvent, setvalidEmailEvent] = useState(true);
   const [validPswdEvent, setvalidPswdEvent] = useState(true);
+  const refUserName = useRef(null);
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
   const handelBlur = (e) => {
-    checkValidOnBlur(e,setvalidEmailEvent,setvalidPswdEvent);
-  }
-  
-  const handelSignInSignUp = () => {
-    checkValidOnBlur((typeof validEmailEvent !== "object" ? "email" : validEmailEvent), setvalidEmailEvent, setvalidPswdEvent)
-    checkValidOnBlur((typeof validPswdEvent !== "object" ? "pswd" : validPswdEvent), setvalidEmailEvent, setvalidPswdEvent);
+    checkValidOnBlur(e, setvalidEmailEvent, setvalidPswdEvent);
+  };
 
-    if(!validEmailEvent || !validPswdEvent) return;
+  const handelSignInSignUp = () => {
+    checkValidOnBlur(
+      typeof validEmailEvent !== "object" ? "email" : validEmailEvent,
+      setvalidEmailEvent,
+      setvalidPswdEvent
+    );
+    checkValidOnBlur(
+      typeof validPswdEvent !== "object" ? "pswd" : validPswdEvent,
+      setvalidEmailEvent,
+      setvalidPswdEvent
+    );
+
+    if (!validEmailEvent || !validPswdEvent) return;
 
     const email = validEmailEvent?.target?.value;
     const paswd = validPswdEvent?.target?.value;
-    console.log(navigate);
-    
-    if(!signup && email && paswd){
-      signUpHelper(auth, email, paswd, navigate).then(()=>navigate("/browse"));
 
+    if (!signup && email && paswd) {
+      signUpHelper(auth, email, paswd).then((user) => {
+        navigate("/browse");
+      });
+    } else if (signup && email && paswd) {
+      signInHelper(auth, refUserName.current.value, email, paswd).then((user) => {
+        dispatch(addUser({ uid: user.uid, email: user.email, displayName: user.displayName }));
+        navigate("/browse");
+      });
     }
-    
-    else if(signup && email && paswd){
-      signInHelper(auth, email, paswd, navigate).then(()=>navigate("/browse"));
-    }
-
-  }
+  };
 
   const toggleSignInForm = () => {
     setSignup(!signup);
@@ -54,7 +66,9 @@ export const Login = () => {
           <form onSubmit={(e) => e.preventDefault()} className="z-6 mb-1">
             {signup && (
               <input
+                ref={refUserName}
                 type="text"
+                name="user-name"
                 placeholder="Full name"
                 className="w-full px-5 py-4 mb-6 border-2 bg-gray-950 border-gray-400 rounded text-white text-[17px]"
               ></input>
@@ -63,18 +77,21 @@ export const Login = () => {
               type="text"
               name="email"
               placeholder="Email Address"
-              className={`w-full px-5 py-4 mb-3 border-2 bg-gray-950 ${ validEmailEvent == null ? "border-red-500" : "border-gray-400" } rounded text-white text-[17px] focus:outline-none`}
+              className={`w-full px-5 py-4 mb-3 border-2 bg-gray-950 ${
+                validEmailEvent == null ? "border-red-500" : "border-gray-400"
+              } rounded text-white text-[17px] focus:outline-none`}
               onFocus={() => setvalidEmailEvent(true)}
               onBlur={handelBlur}
             ></input>
             <div className="text-red-500 text-[15px] h-1 flex items-center">
-              {validEmailEvent == null && "⨂ Please enter a valid email address."}
+              {validEmailEvent == null &&
+                "⨂ Please enter a valid email address."}
             </div>
             <div
               className={`relative w-full px-5 py-4 mt-4 border-2 bg-gray-950 ${
-                validPswdEvent ==  null ? "border-red-500" : "border-gray-400"
+                validPswdEvent == null ? "border-red-500" : "border-gray-400"
               } rounded flex justify-between`}
-              >
+            >
               <input
                 type={showPswd ? "text" : "password"}
                 name="pswd"
@@ -92,7 +109,8 @@ export const Login = () => {
               </button>
             </div>
             <div className="text-red-500 text-[15px] h-7 flex items-center ">
-              {validPswdEvent == null && "⨂ Password must contain 6 to 16 charaters."}
+              {validPswdEvent == null &&
+                "⨂ Password must contain 6 to 16 charaters."}
             </div>
           </form>
           <button
@@ -104,7 +122,7 @@ export const Login = () => {
           </button>
           <div className="text-[17px] ">
             <p className="text-blue-100">
-              {signup ? "Already have account?" :"New to Netflix?"}
+              {signup ? "Already have account?" : "New to Netflix?"}
               <span
                 onClick={toggleSignInForm}
                 className="font-bold cursor-pointer text-white"
