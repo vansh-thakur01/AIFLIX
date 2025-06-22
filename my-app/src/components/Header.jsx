@@ -1,15 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { NETFLIX_IMG ,ProfilePhoto} from "../utils/config";
-import {signOut } from "firebase/auth";
-import { auth } from "../utils/fireBase";
-import { ProfileSignout } from "./profileSignout";
+import { ProfileSignout } from "./ProfileSignoutForHeader";
 
 const Header = ({ signin , loggedIn}) => {
 
   return (
-    <div className={`h-[89px] ${loggedIn ? "w-[135rem]" : "w-[76rem]"}`}>
-      <div className="flex justify-between items-center">
-        <div className="w-54 mt-4">
+    <div className={`${loggedIn ? "w-[140rem]" : "w-[76rem]"} `}>
+      <div className=" h-[86px] flex justify-between items-center">
+        <div className="w-54 mt-4 pb-3">
           <img src={NETFLIX_IMG} alt="logo"></img>
         </div>
         {loggedIn && <ProfileSignout/>}
