@@ -10,7 +10,7 @@ export const ProfileSignout = () => {
     const reverseTimer = useRef(null);
 
     useEffect(()=>{
-        if(reverseTimer.current) clearInterval(reverseTimer.current);
+        return () => {if(reverseTimer.current) clearInterval(reverseTimer.current)};
     },[]);
 
     const handleShowMenu = function(flag) {
@@ -20,23 +20,19 @@ export const ProfileSignout = () => {
     const playForward = function(){
         const v = videoRef.current;
         if(!v) return;
-        // console.dir(v);
         if(reverseTimer.current){
             clearInterval(reverseTimer.current);
             reverseTimer.current = null;
         } 
         v.play();
-        // v.pause()
     }
 
     const playBackward = function(){
         const v = videoRef.current;
         if(!v) return;
-        console.log(v);
         v.pause();
 
         reverseTimer.current = setInterval(()=>{
-            console.log("sdfa")
             if(v.currentTime >= 0.05){
                 v.currentTime = Math.max(0,v.currentTime - 0.033);
             }
