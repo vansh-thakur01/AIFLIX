@@ -3,7 +3,6 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 
 export const signIn = async function(auth, name, email, password){
     try{
-        console.log(auth);
         const {user} = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(user, { displayName: name});
         return user;
@@ -11,12 +10,13 @@ export const signIn = async function(auth, name, email, password){
     catch(error){
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage,errorCode);        
+        console.log(errorMessage,errorCode);
+        throw error;        
     }
     
 }
 
-export const signUp = async function(auth, email, password, navigate){
+export const signUp = async function(auth, email, password){
     try{
         const {user} = await signInWithEmailAndPassword(auth, email, password);
         return user;
@@ -24,7 +24,8 @@ export const signUp = async function(auth, email, password, navigate){
     catch(error){
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);        
+        console.log(errorMessage,errorCode);
+        throw error;        
     }
 
 }

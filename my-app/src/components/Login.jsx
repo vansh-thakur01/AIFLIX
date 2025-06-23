@@ -14,15 +14,17 @@ export const Login = () => {
   const [showPswd, setShowPswd] = useState(false);
   const [validEmailEvent, setvalidEmailEvent] = useState(true);
   const [validPswdEvent, setvalidPswdEvent] = useState(true);
+  const [wrongCredential,setWrongCredential] = useState(null);
   const refUserName = useRef(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  
 
   const handelBlur = (e) => {
     checkValidOnBlur(e, setvalidEmailEvent, setvalidPswdEvent);
   };
 
-  const handelSignInSignUp = () => {
+  const handelSignInSignUp = async () => {
     checkValidOnBlur(
       typeof validEmailEvent !== "object" ? "email" : validEmailEvent,
       setvalidEmailEvent,
@@ -39,15 +41,28 @@ export const Login = () => {
     const email = validEmailEvent?.target?.value;
     const paswd = validPswdEvent?.target?.value;
 
-    if (!signup && email && paswd) {
-      signUpHelper(auth, email, paswd).then((user) => {
-        navigate("/browse");
-      });
-    } else if (signup && email && paswd) {
-      signInHelper(auth, refUserName.current.value, email, paswd).then((user) => {
-        dispatch(addUser({ uid: user.uid, email: user.email, displayName: user.displayName }));
-        navigate("/browse");
-      });
+    try{
+        if (!signup && email && paswd) {
+          // const user = await signUpHelper(auth, email, paswd).then((user) => {
+          //   console.log(user,"user")
+          //   user && navigate("/browse");
+          // }).catch(err => {throw err})
+          const user = await signUpHelper(auth, email, paswd);
+          navigate("browse");
+        } 
+        else if (signup && email && paswd) {
+        //   signInHelper(auth, refUserName.current.value, email, paswd).then((user) => {
+        //   user && dispatch(addUser({ uid: user.uid, email: user.email, displayName: user.displayName }));
+        //   user && navigate("/browse");
+        //   });
+          const user = await signInHelper(auth, refUserName.current.value, email, paswd)
+          dispatch(addUser({ uid: user.uid, email: user.email, displayName: user.displayName }));
+          navigate("/browse");
+        }
+    }
+    catch(err){
+      console.log("serawer")
+      setWrongCredential(err.message)
     }
   };
 
@@ -111,6 +126,7 @@ export const Login = () => {
             <div className="text-red-500 text-[15px] h-7 flex items-center ">
               {validPswdEvent == null &&
                 "⨂ Password must contain 6 to 16 charaters."}
+                {wrongCredential && wrongCredential}
             </div>
           </form>
           <button
