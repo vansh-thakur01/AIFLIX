@@ -2,10 +2,8 @@ import { BasicBgWithHeader } from "./BasicBgWithHeader";
 import Header from "./Header";
 import { useState, useRef } from "react";
 import { checkValidOnBlur } from "../utils/checkValidInfoOfSignIn";
-import { getAuth, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { signIn as signInHelper,signUp as signUpHelper} from "../utils/signInUp";
 import { auth } from "../utils/fireBase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
@@ -17,8 +15,6 @@ export const Login = () => {
   const [wrongCredential,setWrongCredential] = useState(null);
   const refUserName = useRef(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  
 
   const handelBlur = (e) => {
     checkValidOnBlur(e, setvalidEmailEvent, setvalidPswdEvent);
@@ -46,13 +42,13 @@ export const Login = () => {
         if (!signup && email && paswd) {
           const user = await signUpHelper(auth, email, paswd);
           setWrongCredential(null);
-          navigate("/browse");
+          // navigate("/browse");
       
         } 
         else if (signup && email && paswd) {
           const user = await signInHelper(auth, refUserName.current.value, email, paswd)
           dispatch(addUser({ uid: user.uid, email: user.email, displayName: user.displayName }));
-          navigate("/browse");
+          // navigate("/browse");
         }
     }
     catch(err){

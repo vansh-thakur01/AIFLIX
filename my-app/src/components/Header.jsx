@@ -1,11 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { NETFLIX_IMG ,ProfilePhoto} from "../utils/config";
 import { ProfileSignout } from "./ProfileSignoutForHeader";
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { addUser, removeUser } from "../utils/userSlice";
+import { auth } from "../utils/fireBase";
 
 const Header = ({ signin , loggedIn}) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+        (location !== "/browse") && navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        (location !== "/login") && navigate("/login");
+      }
+    });
+
+    return unsubscribe;
+  }, []);
 
   return (
-    <div className={`${loggedIn ? "w-[140rem]" : "w-[76rem]"} `}>
+    <div className={`${loggedIn ? "w-[140rem]" : "w-[76rem]"}`}>
       <div className=" h-[86px] flex justify-between items-center">
         <div className="w-54 mt-4 pb-3">
           <img src={NETFLIX_IMG} alt="logo"></img>

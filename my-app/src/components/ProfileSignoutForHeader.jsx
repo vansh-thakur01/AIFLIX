@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from 'react';
 
 export const ProfileSignout = () => {
     const [showMenu, setShowMenu] = useState(false); 
-    const navigate = useNavigate();
     const videoRef = useRef(null);
     const reverseTimer = useRef(null);
 
@@ -47,7 +46,6 @@ export const ProfileSignout = () => {
     const handleSignout = function(){
         signOut(auth).then(() => {
             console.log("done")
-            navigate("/login");
             }).catch((error) => {
             // An error happened.
             console.log(error);
@@ -87,7 +85,7 @@ export const ProfileSignout = () => {
               <div className="space-y-2 px-4 py-1">
                 <div>Account</div>
                 <div>Help Center</div>
-                <button onMouseEnter={playForward} onMouseLeave={playBackward} className="">
+                <button onClick={handleSignout} onMouseEnter={playForward} onMouseLeave={playBackward} className="">
                   Sigh out of Vetflix?
                 </button>
               </div>
