@@ -11,16 +11,16 @@ const VideoTitle = ({title, overview}) => {
     const style = window.getComputedStyle(e);
     let lineHeigth = parseFloat(style.lineHeight);
 
-    const maxTwoLineHeight = 2*lineHeigth;
+    const maxTwoLineHeight = 2*lineHeigth+50;
     const actualHeigth = e.scrollHeight;
     setTitleHeight(actualHeigth > maxTwoLineHeight);
   
-  },[]);
+  });
 
   return (
     <div className="absolute z-6 h-screen flex items-center w-full px-14 bg-gradient-to-r from-black to-transparent to-[60%]">
       <div className="text-amber-50">
-        <h1 ref={el} className={`${titleHeight?"text-8xl leading-25 mb-8":"text-9xl leading-28"} font-bold w-xl text-left mb-6 `}>
+        <h1 ref={el} className={`${titleHeight?"text-8xl leading-25 mb-8":"text-9xl leading-26.5 mb-5"} font-bold w-xl text-left `}>
           {title}
         </h1>
         <p className="w-2xl mb-5">{overview}</p>

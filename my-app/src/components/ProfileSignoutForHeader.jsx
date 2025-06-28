@@ -19,6 +19,7 @@ export const ProfileSignout = () => {
     const playForward = function(){
         const v = videoRef.current;
         if(!v) return;
+        v.playbackRate = 2;
         if(reverseTimer.current){
             clearInterval(reverseTimer.current);
             reverseTimer.current = null;

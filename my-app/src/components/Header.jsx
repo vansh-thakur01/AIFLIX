@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
 import { auth } from "../utils/fireBase";
+import { SEARCH_SVG } from "../utils/svg";
 
 const Header = ({ signin , loggedIn}) => {
   const navigate = useNavigate();
@@ -33,7 +34,12 @@ const Header = ({ signin , loggedIn}) => {
         <div className="w-54 mt-4 pb-3">
           <img src={NETFLIX_IMG} alt="logo"></img>
         </div>
-        {loggedIn && <ProfileSignout/>}
+        {loggedIn && (
+          <div className="flex items-center gap-9 cursor-pointer">
+            <button>{SEARCH_SVG}</button>
+            <ProfileSignout />
+          </div>
+        )}
         {signin && (
           <div className="h-full flex items-center text-amber-50">
             <div className="flex items-center mr-5 border-2 px-3.5 py-0.5 rounded-l rounded-r">
