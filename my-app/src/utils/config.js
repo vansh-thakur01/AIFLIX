@@ -14,4 +14,9 @@ export const OPTIONSOBJ = {
   };
 
 export const TMDB_IMAGE_CDN = "https://image.tmdb.org/t/p/w500/";
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "eng", name: "English" },
+  { identifier: "hindi", name: "हिन्दी" },
+];
+
   
