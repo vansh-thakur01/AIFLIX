@@ -10,6 +10,12 @@ import { SEARCH_SVG } from "../utils/svg";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { LanguageSelector } from "./LanguageSelector";
 
+let s =
+  '```json\n{\n  "movies": [\n    {\n      "title": "The Nice Guys",\n      "tmdb_id": 315450\n    },\n    {\n      "title": "21 Jump Street",\n      "tmdb_id": 139051\n    },\n    {\n      "title": "Game Night",\n      "tmdb_id": 427383\n    },\n    {\n      "title": "Booksmart",\n      "tmdb_id": 496174\n    },\n    {\n      "title": "Paddington 2",\n      "tmdb_id": 388294\n    }\n  ]\n}\n```';
+
+
+console.log(JSON.parse(s.replace(/```json|```/g, '')));
+
 const Header = ({ signin , loggedIn}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -6,14 +6,16 @@ export const POPULAR_MOVIES_API = "https://api.themoviedb.org/3/movie/popular?la
 export const TOP_RATED_MOVIES_API = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
 export const UPCOMING_MOVIES_API = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 export const OPTIONSOBJ = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZWI3ZGNlNTgzOGJlZWJkZDU4ODM5ODQ4NzJkMjdjNiIsIm5iZiI6MTc1MDg1MjYyMi44NTc5OTk4LCJzdWIiOiI2ODViZTQwZTYwZmU5OWU4ZmZjOWNmYWQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.5QQnu8Ieyg15YwwLfkTBPxv4VVR56RhnkQqUoMRGPuE'
-    }
-  };
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZWI3ZGNlNTgzOGJlZWJkZDU4ODM5ODQ4NzJkMjdjNiIsIm5iZiI6MTc1MDg1MjYyMi44NTc5OTk4LCJzdWIiOiI2ODViZTQwZTYwZmU5OWU4ZmZjOWNmYWQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.5QQnu8Ieyg15YwwLfkTBPxv4VVR56RhnkQqUoMRGPuE",
+  },
+};
 
 export const TMDB_IMAGE_CDN = "https://image.tmdb.org/t/p/w500/";
+export const TMDB_MOVIE_SEARCH_API = 'https://api.themoviedb.org/3/search/movie'
 export const SUPPORTED_LANGUAGES = [
   { identifier: "eng", name: "English" },
   { identifier: "hindi", name: "हिन्दी" },

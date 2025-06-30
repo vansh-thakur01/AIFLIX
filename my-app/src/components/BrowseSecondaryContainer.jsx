@@ -6,6 +6,7 @@ const BrowseSecondaryContainer = () => {
   let popularMovies = useSelector(store  => store.movies.popularMovies);
   let topRatedMovies = useSelector(store  => store.movies.topRatedMovies);
   let upcomingMovies = useSelector(store  => store.movies.upcomingMovies);
+  // console.log(nowPlaying,"sdfdgfasudygfyugyguygoiugu")
 
   if(!nowPlaying  || !popularMovies || !topRatedMovies || !upcomingMovies) return;
 

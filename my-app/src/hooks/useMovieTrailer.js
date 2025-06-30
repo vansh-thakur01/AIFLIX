@@ -13,7 +13,6 @@ const useMovieTrailer = (movieId)=>{
         OPTIONSOBJ
       );
       const data = await response.json();
-      console.log(data,"asfasdf ");
       const filter = data.results.filter((obj) => obj.type === "Trailer");
       const trailer = filter[0];
       dispatch(addMovieTrailer(trailer));
