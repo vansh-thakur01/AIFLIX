@@ -10,8 +10,10 @@ export const GptMoviesSuggestion = () => {
   return (
   <div className='flex'>
     <div className='flex gap-4'>
-      {aiMovies.map(movie => <MovieCard title={movie.title} posterPath={backdrop_path}/>)}
+      {aiMovies.filter(movie => movie).map(movie => <MovieCard title={movie.title} posterPath={movie.poster_path}/>)}
     </div>
   </div>
   )
 }
+
+

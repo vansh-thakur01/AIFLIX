@@ -10,11 +10,6 @@ import { SEARCH_SVG } from "../utils/svg";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { LanguageSelector } from "./LanguageSelector";
 
-let s =
-  '```json\n{\n  "movies": [\n    {\n      "title": "The Nice Guys",\n      "tmdb_id": 315450\n    },\n    {\n      "title": "21 Jump Street",\n      "tmdb_id": 139051\n    },\n    {\n      "title": "Game Night",\n      "tmdb_id": 427383\n    },\n    {\n      "title": "Booksmart",\n      "tmdb_id": 496174\n    },\n    {\n      "title": "Paddington 2",\n      "tmdb_id": 388294\n    }\n  ]\n}\n```';
-
-
-console.log(JSON.parse(s.replace(/```json|```/g, '')));
 
 const Header = ({ signin , loggedIn}) => {
   const navigate = useNavigate();
@@ -42,23 +37,25 @@ const Header = ({ signin , loggedIn}) => {
   }
 
   return (
-    <div className={`${loggedIn ? "w-[140rem]" : "w-[76rem]"}`}>
+    <div className={`${loggedIn ? "w-[140rem]" : "w-[76rem]"} `}>
       <div className=" h-[86px] flex justify-between items-center">
         <div className="w-54 mt-4 pb-3">
           <img src={NETFLIX_IMG} alt="logo"></img>
         </div>
         {loggedIn && (
-          <div className="flex items-center gap-9 cursor-pointer">
+          <div className="flex items-center gap-9 cursor-pointer pr-7">
            {gptSearchShow && <LanguageSelector/> }
             <button onClick={handleGptSearchClick}>{SEARCH_SVG}</button>
+            <div className="w-20 h-20">
             <ProfileSignout />
+            </div>
           </div>
         )}
         {signin && (
           <div className="h-full flex items-center text-amber-50">
            <LanguageSelector/>
             <Link to="/login">
-              <button className="py-2 px-4 bg-red-500 rounded-l rounded-r font-bold">
+              <button className="py-2 px-4 bg-black rounded-l rounded-r font-bold">
                 Sign In
               </button>
             </Link>

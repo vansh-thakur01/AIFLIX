@@ -1,5 +1,12 @@
 
 export const askAI = async (query) => {
+  let timer = (sec) => {
+    new Promise((_,reject)=>{
+      setTimeout(() => {
+        reject("time out");
+    }, sec*1000) })
+}
+  
   try{
       console.log("AI request")
       const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {

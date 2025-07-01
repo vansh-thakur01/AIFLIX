@@ -8,7 +8,7 @@ function VideoBackground({movieId}) {
     if(!videoTrailer) return
 
     return (
-      <div className="relative w-full bg-amber-800 h-screen overflow-hidden">
+      <div className="relative w-full bg-[#171717] h-screen overflow-hidden">
         <iframe
           width="560"
           height="315"

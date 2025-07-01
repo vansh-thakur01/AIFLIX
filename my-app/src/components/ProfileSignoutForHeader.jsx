@@ -2,8 +2,12 @@ import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../utils/fireBase';
 import { useEffect, useRef, useState } from 'react';
+import { ProfileDropDownMenu } from './profileDropDownMenu';
+import { ProfileSignoutForHeaderShimmer } from './shimmerUi/ProfileSignoutForHeaderShimmer';
+import Skeleton from 'react-loading-skeleton';
 
 export const ProfileSignout = () => {
+    const [videoLoad, setVideoLoad] = useState(false);
     const [showMenu, setShowMenu] = useState(false); 
     const videoRef = useRef(null);
     const reverseTimer = useRef(null);
@@ -13,7 +17,9 @@ export const ProfileSignout = () => {
     },[]);
 
     const handleShowMenu = function(flag) {
-        setShowMenu(flag);
+      console.log(flag)
+      if(flag === "toggle") setShowMenu(!showMenu);
+      else setShowMenu(flag);
     }
 
     const playForward = function(){
@@ -44,32 +50,30 @@ export const ProfileSignout = () => {
 
     }
 
-    const handleSignout = function(){
-        signOut(auth).then(() => {
-            console.log("done")
-            }).catch((error) => {
-            // An error happened.
-            console.log(error);
-
-            });
-        }
-
     return (
       <div className="relative">
         <div
-          onMouseEnter={() => handleShowMenu(true)}
-          onMouseLeave={() => handleShowMenu(false)}
+          onClick={() => handleShowMenu("toggle")}
+          // onMouseLeave={() => handleShowMenu(false)}
           className="flex items-center gap-2"
         >
+          {!videoLoad && <div>
+            <ProfileSignoutForHeaderShimmer />
+          </div>}
+
           <video
             ref={videoRef}
-            className="w-20 h-20 bg-amber-300"
+            className={`w-20 h-20 ${videoLoad ? "opacity-100" : "opacity-0"}`}
             muted
             preload="metadata"
+            onLoadedData={() => setVideoLoad(true)}
+            
           >
-            <source src="/profileMonkeyyy.mp4"></source>
+            <source src="/profileMonkeyyy.mp4" type="video/mp4"></source>
           </video>
-          <div className="pointer-events-none text-gray-300">{showMenu ? "▲" : "▼"}</div>
+          <div className="pointer-events-none text-gray-300">
+            {showMenu ? "▲" : "▼"}
+          </div>
         </div>
         {showMenu && (
           <div
@@ -77,20 +81,10 @@ export const ProfileSignout = () => {
             onMouseLeave={() => handleShowMenu(false)}
             className="absolute right-10 "
           >
-            <div className="h-5 pointer-events-none text-gray-300 flex justify-end pr-5">
-              ▲
-            </div>
-            <div className="bg-black text-[14px]  w-55 text-white py-4 opacity-92">
-              <div className="px-4">Manage Profile</div>
-              <div className="border-b-2 pb-5 mb-2 border-gray-600"></div>
-              <div className="space-y-2 px-4 py-1">
-                <div>Account</div>
-                <div>Help Center</div>
-                <button onClick={handleSignout} onMouseEnter={playForward} onMouseLeave={playBackward} className="">
-                  Sigh out of Vetflix?
-                </button>
-              </div>
-            </div>
+            <ProfileDropDownMenu
+              playForward={playForward}
+              playBackward={playBackward}
+            />
           </div>
         )}
         <div>{/* <button onClick={handelSignout}>Sign Out?</button> */}</div>
