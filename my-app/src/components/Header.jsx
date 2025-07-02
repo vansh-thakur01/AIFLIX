@@ -9,6 +9,7 @@ import { auth } from "../utils/fireBase";
 import { SEARCH_SVG } from "../utils/svg";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { LanguageSelector } from "./LanguageSelector";
+import { SearchButton } from "./search/SearchButton";
 
 
 const Header = ({ signin , loggedIn}) => {
@@ -44,12 +45,14 @@ const Header = ({ signin , loggedIn}) => {
         </div>
         {loggedIn && (
           <div className="flex items-center gap-9 cursor-pointer pr-7">
-           {gptSearchShow && <LanguageSelector/> }
-            <button onClick={handleGptSearchClick}>{SEARCH_SVG}</button>
-            <div className="w-20 h-20">
-            <ProfileSignout />
-            </div>
+           {/* {gptSearchShow && <LanguageSelector/> } */}
+          <div>
+            <SearchButton/>
           </div>
+          <div className="w-20 h-20">
+            <ProfileSignout />
+          </div>
+        </div>
         )}
         {signin && (
           <div className="h-full flex items-center text-amber-50">

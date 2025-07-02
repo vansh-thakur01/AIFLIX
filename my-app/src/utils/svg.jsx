@@ -36,6 +36,6 @@ c1.946,1.123,3.338,2.937,3.92,5.107C44.053,28.249,43.754,30.517,42.631,32.462z"
       />
     </g>
   </svg>
-  <p className="text-[17px] text-white pb-1">Search</p>
+  {/* <p className="text-[17px] text-white pb-1">Search</p> */}
 </div>
 );

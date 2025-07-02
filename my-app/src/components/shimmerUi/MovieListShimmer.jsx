@@ -22,7 +22,7 @@ export const MovieListShimmer = () => {
             {facklist.map((facklist) => (
               <Skeleton
                 width={200}
-                height={320}
+                height={290}
                 duration={2}
                 baseColor="#3B3B3B"
                 borderRadius="0xp"

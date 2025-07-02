@@ -16,7 +16,7 @@ const BrowseMainContainer = () => {
     const {original_title , overview, id} = mainMovie;
 
     return (
-      <div className="h-screen overflow-hidden bg-[#171717]">
+      <div className="h-dvh overflow-hidden bg-[#171717]">
         <VideoTitle title={original_title} overview={overview} />
         <VideoBackground movieId={id} />
       </div>

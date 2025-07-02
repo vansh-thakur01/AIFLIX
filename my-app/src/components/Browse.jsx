@@ -8,11 +8,13 @@ import { useUpcomingMovies } from "../hooks/useUpcomingMovies";
 import { useEffect, useRef, useState } from "react";
 import { GtpSearch } from "./GtpSearch";
 import { useSelector } from "react-redux";
+import { SearchContainer } from "./search/SearchContainer";
 
 const Browse = () => {
     const mainContainer = useRef(null);
     const [scrolledHalf, setScrolledHalf] = useState(false);
-    const showGptSearch = useSelector(store => store.gpt.showGptSearch)
+    const tmdbSearchMovies = useSelector(store => store.movies.searchedTmdbMovies)
+    // const showGptSearch = useSelector(store => store.gpt.showGptSearch)
 
     useEffect(()=>{
       const handleScroll = ()=>{
@@ -41,7 +43,7 @@ const Browse = () => {
           <div className={`p-3 pt-2 px-11 fixed flex top-0 left-0 right-0 bottom-0 transition-all duration-500 justify-center z-15 ${scrolledHalf ? "bg-black/90 h-26" :" h-27 bg-gradient-to-b from-black to-transparent to-[95%]"}`}>
             <Header loggedIn={true} />
           </div>
-            {showGptSearch ? <GtpSearch/> : 
+            {tmdbSearchMovies ? <SearchContainer moviesData={tmdbSearchMovies}/> : 
             <div>
               <div ref={mainContainer}>
                 <BrowseMainContainer />

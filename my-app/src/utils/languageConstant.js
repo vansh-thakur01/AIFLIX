@@ -9,7 +9,7 @@ const lang = {
     HelpCenter: "Help Center",
     SignoutofMetflix: "Sign out of Metflix",
     NowPlaying: "Now Playing",
-    TrendingNow: "Trenfing Now",
+    TrendingNow: "Trending Now",
     TopRated: "Top Rated",
     Upcoming: "Upcoming",
     AskFromAI: "Ask From AI",

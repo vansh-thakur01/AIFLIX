@@ -352,7 +352,10 @@ const gtpSlice = createSlice({
       state.showGptSearch = !state.showGptSearch;
     },
     addAiMoviesResult: (state, action) => {
-      state.aiMovies = action.payload;
+      // console.log(action.payload,"sfadfdfadfsadf",action.payload.length);
+      let data = action.payload
+      if(!data.length) data = state.aiMovies; 
+      state.aiMovies = data;
     },
     removeAiMoviesResult: (state) => {
       state.aiMovies = null;

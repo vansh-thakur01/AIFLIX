@@ -16,13 +16,14 @@ export const AiMovieList = () => {
 
   const aiSearch = async (e) => {
     e.preventDefault()
-    dispatch(removeAiMoviesResult());
     if (!searchText.current?.value) return;
+    dispatch(removeAiMoviesResult());
     const { movies } = await askAI(searchText?.current?.value);
     console.log(movies, "movies name");
-    const arrayOfMoviesPromise = movies.map((name) => searchTmdbMovie(name));
+    const arrayOfMoviesPromise = movies.map((name) => searchTmdbMovie(name).then(arr=>arr[0]));
 
-    const data = await Promise.all(arrayOfMoviesPromise);
+    const rawData = await Promise.all(arrayOfMoviesPromise);
+    const data = rawData.filter((movie) => movie);
     console.log(data, "movies data form tmdb");
     dispatch(addAiMoviesResult(data));
   };
@@ -55,9 +56,7 @@ export const AiMovieList = () => {
       {aiMovies && (
         <div className="flex overflow-y-hidden no-scrollbar mb-15">
           <div className="flex">
-            {aiMovies
-              .filter((movie) => movie)
-              .map((movie) => (
+            {aiMovies.map((movie) => (
                 <MovieCard title={movie.title} posterPath={movie.poster_path} />
               ))}
           </div>
