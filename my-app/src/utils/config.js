@@ -9,8 +9,7 @@ export const OPTIONSOBJ = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZWI3ZGNlNTgzOGJlZWJkZDU4ODM5ODQ4NzJkMjdjNiIsIm5iZiI6MTc1MDg1MjYyMi44NTc5OTk4LCJzdWIiOiI2ODViZTQwZTYwZmU5OWU4ZmZjOWNmYWQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.5QQnu8Ieyg15YwwLfkTBPxv4VVR56RhnkQqUoMRGPuE",
+    Authorization: "Bearer " + import.meta.env.VITE_TMDB_API_KEY,
   },
 };
 
