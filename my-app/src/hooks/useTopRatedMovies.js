@@ -5,7 +5,7 @@ import { addTopRatedMovies } from "../utils/movieSlice";
 
 export const useTopRatedMovies = () => {
   const dispatch = useDispatch();
-  const topRatedMovies = useSelector(store => store.movies.topRatedMovies)
+  const topRatedMovies = useSelector((store) => store.movies.topRatedMovies);
 
   const getMovies = async function () {
     try {

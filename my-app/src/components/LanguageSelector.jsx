@@ -31,7 +31,9 @@ export function LanguageSelector() {
             fill="currentColor"
           ></path>
         </svg>
-        <span className="text-xl w-17 text-center ">{value === "eng" ? "English" : "हिंदीं"}</span>
+        <span className="text-xl w-17 text-center ">
+          {value === "eng" ? "English" : "हिंदीं"}
+        </span>
         <div className="pointer-events-none text-gray-300 ml-2">▼</div>
       </div>
 
@@ -41,7 +43,15 @@ export function LanguageSelector() {
         onChange={handleChange}
         className="absolute inset-0 opacity-0 w-[99%] h-full cursor-pointer text-amber-50"
       >
-        {SUPPORTED_LANGUAGES.map(lang=> <option className="bg-black" key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
+        {SUPPORTED_LANGUAGES.map((lang) => (
+          <option
+            className="bg-black"
+            key={lang.identifier}
+            value={lang.identifier}
+          >
+            {lang.name}
+          </option>
+        ))}
       </select>
     </div>
   );

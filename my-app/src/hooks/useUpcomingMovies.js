@@ -5,7 +5,7 @@ import { addUpcomingMovies } from "../utils/movieSlice";
 
 export const useUpcomingMovies = () => {
   const dispatch = useDispatch();
-  const upcomingMovies = useSelector(store => store.movies.upcomingMovies)
+  const upcomingMovies = useSelector((store) => store.movies.upcomingMovies);
 
   const getMovies = async function () {
     try {
@@ -18,6 +18,6 @@ export const useUpcomingMovies = () => {
   };
 
   useEffect(() => {
-   !upcomingMovies && getMovies();
+    !upcomingMovies && getMovies();
   }, []);
 };

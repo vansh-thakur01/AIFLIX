@@ -1,5 +1,6 @@
 import Body from "./components/Body"
 import "./index.css"
+import "react-loading-skeleton/dist/skeleton.css";
 import "./utils/fireBase"
 import {Provider} from "react-redux"
 import store from "./utils/appStore"

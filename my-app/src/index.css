@@ -22,6 +22,26 @@
     }
   }
 
+  
+@layer utilities {
+  @keyframes giggle {
+    0%, 100% {
+      transform: translateX(-2px);
+    }
+    50% {
+      transform: translateX(2px);
+    }
+  }
+
+  .animate-giggle {
+    animation: giggle 0.2s ease-in-out infinite;
+  }
+
+  .animate-giggle-once {
+    animation: giggle 0.2s ease-in-out 2;
+  }
+}
+
 
 
 

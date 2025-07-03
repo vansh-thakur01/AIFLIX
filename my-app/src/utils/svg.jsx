@@ -39,3 +39,40 @@ c1.946,1.123,3.338,2.937,3.92,5.107C44.053,28.249,43.754,30.517,42.631,32.462z"
   {/* <p className="text-[17px] text-white pb-1">Search</p> */}
 </div>
 );
+
+export const crossMark_SVG = (
+  <svg
+    width="25"
+    height="25"
+    viewBox="-19 0 550 514"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="256"
+      cy="256"
+      r="256"
+      fill="#f44336"
+      stroke="black"
+      stroke-width="20"
+    />
+    <line
+      x1="160"
+      y1="160"
+      x2="352"
+      y2="352"
+      stroke="black"
+      stroke-width="40"
+      stroke-linecap="round"
+    />
+    <line
+      x1="352"
+      y1="160"
+      x2="160"
+      y2="352"
+      stroke="black"
+      stroke-width="40"
+      stroke-linecap="round"
+    />
+  </svg>
+);
+
