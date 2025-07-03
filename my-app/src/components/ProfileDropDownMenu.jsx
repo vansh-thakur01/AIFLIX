@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeLang } from "../utils/configSlice";
+import { changeLang } from "../utils/store/slice/configSlice";
 import lang from "../utils/languageConstant";
 
 export const ProfileDropDownMenu = ({ playForward, playBackward }) => {

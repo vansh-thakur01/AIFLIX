@@ -1,10 +1,10 @@
-import { MAIN_BG_IMG } from "../utils/config";
+import { MAIN_BG_IMG } from "../utils/constants";
 
 export const BasicBgWithHeader = ({ Header, shade }) => {
   return (
     <div className="retilive">
       <div className="absolute z-7 top-0 left-1/2 -translate-x-1/2">
-       {Header && <Header />}
+        {Header && <Header />}
       </div>
       <div className="relitive ">
         <div className="absolute inset-0 bg-red-800" />

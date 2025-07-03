@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { SUPPORTED_LANGUAGES } from "../utils/config";
-import { changeLang } from "../utils/configSlice";
+import { SUPPORTED_LANGUAGES } from "../utils/constants";
+import { changeLang } from "../utils/store/slice/configSlice";
 import { useDispatch } from "react-redux";
 
 export function LanguageSelector() {

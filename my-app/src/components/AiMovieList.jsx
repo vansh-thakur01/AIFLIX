@@ -1,38 +1,65 @@
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { askAI } from "../utils/openRouter";
-import { addAiMoviesResult,removeAiMoviesResult } from "../utils/gptSlice";
+import { askAI } from "../utils/apiRequests/openRouter";
+import {activateAiMoviesBackup, addAiMoviesResult,removeAiMoviesResult} from "../utils/store/slice/gptSlice";
 import { MovieListShimmer } from "./shimmerUi/MovieListShimmer";
-import { searchTmdbMovie } from "../utils/searchTmdbMove";
+import { searchTmdbMovie } from "../utils/apiRequests/searchTmdbMove";
 import MovieCard from "./MovieCard";
 import lang from "../utils/languageConstant";
-
+import { AiHaveMovies } from "./errors_components/AiHaveMovies";
+import { debouncing } from "../utils/helperFunctions/debouncing";
 
 export const AiMovieList = () => {
   const searchText = useRef(null);
   const selectedLang = useSelector((store) => store.config.lang);
-  const aiMovies = useSelector((store) => store.gpt.aiMovies);
+  const aiMovies = useSelector((store) => store?.gpt?.aiMovies);
+  const [aiNoMovies, setAiNoMovies] = useState(false);
+  const [showRecivedMovies, setShowRecivedMovies] = useState(false);
+
   const dispatch = useDispatch();
 
+  const removeNoMovieContainerAndAddBackUpMovies = ()=>{
+    setAiNoMovies(false);
+    dispatch(activateAiMoviesBackup());
+  }
+
+  const [removeNoMovieContainerAndAdd,_] = useMemo(() => debouncing(removeNoMovieContainerAndAddBackUpMovies,5),[])
+
+  const handleNoMovieFound = ()=>{
+    setAiNoMovies(true);
+    removeNoMovieContainerAndAdd();
+  }
+
   const aiSearch = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!searchText.current?.value) return;
     dispatch(removeAiMoviesResult());
     const { movies } = await askAI(searchText?.current?.value);
     console.log(movies, "movies name");
-    const arrayOfMoviesPromise = movies.map((name) => searchTmdbMovie(name).then(arr=>arr[0]));
+    const arrayOfMoviesPromise = movies.map((name) =>
+      searchTmdbMovie(name).then((arr) => arr[0])
+    );
 
     const rawData = await Promise.all(arrayOfMoviesPromise);
-    const data = rawData.filter((movie) => movie);
+    let data = rawData.filter((movie) => movie);
+    if(!data?.length) handleNoMovieFound();
     console.log(data, "movies data form tmdb");
+    
     dispatch(addAiMoviesResult(data));
   };
 
-//   if(!aiMovies) return (<MovieListShimmer/>)
-  
+  useEffect(()=>{
+    dispatch(activateAiMoviesBackup());
+  },[])
+
+  useEffect(()=>{
+    
+  },[aiMovies])
+
+  //   if(!aiMovies) return (<MovieListShimmer/>)
 
   return (
-    <div className="ml-15 ">
+    <div className="ml-15 relative">
       <div className={`flex ${selectedLang === "hindi" && "tracking-widest"}`}>
         <h1 className=" text-[26px] border-l-3 pl-2 font-semibold mb-2 text-amber-50 ">
           {`${lang[selectedLang].AskFromAI}:`}
@@ -51,18 +78,19 @@ export const AiMovieList = () => {
         </div>
       </div>
 
-      {!aiMovies && <MovieListShimmer />}
-
-      {aiMovies && (
-        <div className="flex overflow-y-hidden no-scrollbar mb-15">
-          <div className="flex">
-            {aiMovies.map((movie) => (
+      <div className="h-90 relative">
+        {<div className={`absolute ${(!aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-200`}> <MovieListShimmer /> </div>}
+        {<div className={`absolute top-2 w-[100%] ${(aiNoMovies && !aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-300`}> <AiHaveMovies/></div>}
+        {
+          <div className={`flex overflow-y-hidden no-scrollbar mb-15 ${(aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-400`}>
+            <div className="flex">
+              {aiMovies?.map((movie) => (
                 <MovieCard title={movie.title} posterPath={movie.poster_path} />
               ))}
+            </div>
           </div>
-        </div>
-      )}
+        }
+      </div>
     </div>
   );
 };
-

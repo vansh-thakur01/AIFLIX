@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import  VideoTitle  from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
-import { randomNumber } from "../utils/randonNumber";
+import { randomNumber } from "../utils/helperFunctions/randonNumber";
 import { BrowseMainContainerShimmer } from "./shimmerUi/BrowseMainContainerShimmer";
 import Skeleton from "react-loading-skeleton";
 

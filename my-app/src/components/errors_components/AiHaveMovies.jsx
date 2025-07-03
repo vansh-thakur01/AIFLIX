@@ -1,0 +1,21 @@
+import React from 'react'
+import { bird_SVG } from '../../utils/svg';
+import { motion } from "framer-motion";
+
+
+export const AiHaveMovies = () => {
+  return (
+    <div className="bg-white/30 w-[100%] h-74 flex justify-center items-center backdrop-blur-2xl">
+        <motion.div
+        animate={{ x: ["-240%", "240%"] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+        style={{ position: "absolute", top: 100, }}
+        >
+            {bird_SVG}
+        </motion.div>;
+      <p className="text-white/80 font-semibold text-4xl ">
+        We don't have this type of movies
+      </p>
+    </div>
+  );
+}

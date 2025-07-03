@@ -4,7 +4,7 @@ const gtpSlice = createSlice({
   name: "gpt",
   initialState: {
     showGptSearch: false,
-    aiMovies: [
+    aiBackUpMovies: [
       {
         adult: false,
         backdrop_path: "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
@@ -346,22 +346,25 @@ const gtpSlice = createSlice({
         vote_count: 8619,
       },
     ],
+    aiMovies:null,
   },
   reducers: {
     toggleGptSearchView: (state) => {
       state.showGptSearch = !state.showGptSearch;
     },
     addAiMoviesResult: (state, action) => {
-      // console.log(action.payload,"sfadfdfadfsadf",action.payload.length);
-      let data = action.payload
-      if(!data.length) data = state.aiMovies; 
+      let data = action.payload;
+      if (!data.length) data = state.aiMovies;
       state.aiMovies = data;
     },
     removeAiMoviesResult: (state) => {
       state.aiMovies = null;
     },
+    activateAiMoviesBackup:(state) => {
+      state.aiMovies = state.aiBackUpMovies;
+    }
   },
 });
 
-export const {toggleGptSearchView, addAiMoviesResult, removeAiMoviesResult} = gtpSlice.actions;
+export const {toggleGptSearchView, addAiMoviesResult, removeAiMoviesResult, activateAiMoviesBackup} = gtpSlice.actions;
 export default gtpSlice.reducer;

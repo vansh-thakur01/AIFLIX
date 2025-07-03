@@ -1,6 +1,4 @@
-import React from "react";
 import MovieCard from "../MovieCard";
-import { SearchError } from "../errors_components/SearchError";
 
 export const SearchContainer = ({ moviesData }) => {
   console.log(moviesData, "888888888888888888888");

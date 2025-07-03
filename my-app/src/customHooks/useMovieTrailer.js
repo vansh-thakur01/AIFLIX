@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { OPTIONSOBJ } from "../utils/config";
-import { addMovieTrailer } from "../utils/movieSlice";
+import { OPTIONSOBJ } from "../utils/constants";
+import { addMovieTrailer } from "../utils/store/slice/movieSlice";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 

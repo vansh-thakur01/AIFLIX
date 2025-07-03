@@ -1,25 +1,27 @@
 import { BasicBgWithHeader } from "./BasicBgWithHeader";
 import Header from "./Header";
 import { useState, useRef } from "react";
-import { checkValidOnBlur } from "../utils/checkValidInfoOfSignIn";
-import { signIn as signInHelper,signUp as signUpHelper} from "../utils/signInUp";
-import { auth } from "../utils/fireBase";
+import { checkValidOnBlur } from "../utils/helperFunctions/checkValidInfoOfSignIn";
+import {
+  signIn as signInHelper,
+  signUp as signUpHelper,
+} from "../utils/firebase/signInUp";
+import { auth } from "../utils/firebase/fireBase";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";
+import { addUser } from "../utils/store/slice/userSlice";
 
 export const Login = () => {
   let [signup, setSignup] = useState(false);
   const [showPswd, setShowPswd] = useState(false);
   const [validEmailEvent, setvalidEmailEvent] = useState(true);
   const [validPswdEvent, setvalidPswdEvent] = useState(true);
-  const [wrongCredential,setWrongCredential] = useState(null);
+  const [wrongCredential, setWrongCredential] = useState(null);
   const refUserName = useRef(null);
   const dispatch = useDispatch();
 
   const handelBlur = (e) => {
     checkValidOnBlur(e, setvalidEmailEvent, setvalidPswdEvent);
   };
-
 
   const handelSignInSignUp = async () => {
     checkValidOnBlur(
@@ -38,24 +40,31 @@ export const Login = () => {
     const email = validEmailEvent?.target?.value;
     const paswd = validPswdEvent?.target?.value;
 
-    try{
-        if (!signup && email && paswd) {
-          const user = await signUpHelper(auth, email, paswd);
-          setWrongCredential(null);
-          // navigate("/browse");
-      
-        } 
-        else if (signup && email && paswd) {
-          const user = await signInHelper(auth, refUserName.current.value, email, paswd)
-          dispatch(addUser({ uid: user.uid, email: user.email, displayName: user.displayName }));
-          // navigate("/browse");
-        }
-    }
-    catch(err){
-      setWrongCredential(err.message)
+    try {
+      if (!signup && email && paswd) {
+        const user = await signUpHelper(auth, email, paswd);
+        setWrongCredential(null);
+        // navigate("/browse");
+      } else if (signup && email && paswd) {
+        const user = await signInHelper(
+          auth,
+          refUserName.current.value,
+          email,
+          paswd
+        );
+        dispatch(
+          addUser({
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+          })
+        );
+        // navigate("/browse");
+      }
+    } catch (err) {
+      setWrongCredential(err.message);
     }
   };
-
 
   const toggleSignInForm = () => {
     setSignup(!signup);
@@ -103,7 +112,9 @@ export const Login = () => {
                 name="pswd"
                 placeholder="Passowrd"
                 className="text-white text-[17px] outline-none focus:ring-0 focus:outline-none flex-1"
-                onFocus={() =>{ setvalidPswdEvent(true),setWrongCredential(null)}}
+                onFocus={() => {
+                  setvalidPswdEvent(true), setWrongCredential(null);
+                }}
                 onBlur={handelBlur}
               ></input>
               <button
@@ -116,7 +127,8 @@ export const Login = () => {
             </div>
             <div className="text-red-500 text-[15px] h-7 flex items-center ">
               {(validPswdEvent == null &&
-                "⨂ Password must contain 6 to 16 charaters.") || (wrongCredential && wrongCredential)}
+                "⨂ Password must contain 6 to 16 charaters.") ||
+                (wrongCredential && wrongCredential)}
             </div>
           </form>
           <button

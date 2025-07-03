@@ -1,18 +1,17 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { NETFLIX_IMG ,ProfilePhoto} from "../utils/config";
+import { NETFLIX_IMG, ProfilePhoto } from "../utils/constants";
 import { ProfileSignout } from "./ProfileSignoutForHeader";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { addUser, removeUser } from "../utils/userSlice";
-import { auth } from "../utils/fireBase";
+import { addUser, removeUser } from "../utils/store/slice/userSlice";
+import { auth } from "../utils/firebase/fireBase";
 import { SEARCH_SVG } from "../utils/svg";
-import { toggleGptSearchView } from "../utils/gptSlice";
+import { toggleGptSearchView } from "../utils/store/slice/gptSlice";
 import { LanguageSelector } from "./LanguageSelector";
 import { SearchButton } from "./search/SearchButton";
 
-
-const Header = ({ signin , loggedIn}) => {
+const Header = ({ signin, loggedIn }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -23,19 +22,19 @@ const Header = ({ signin , loggedIn}) => {
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-        (location !== "/browse") && navigate("/browse");
+        location !== "/browse" && navigate("/browse");
       } else {
         dispatch(removeUser());
-        (location !== "/login") && navigate("/login");
+        location !== "/login" && navigate("/login");
       }
     });
 
     return unsubscribe;
   }, []);
 
-  const handleGptSearchClick = ()=>{
+  const handleGptSearchClick = () => {
     dispatch(toggleGptSearchView());
-  }
+  };
 
   return (
     <div className={`${loggedIn ? "w-[140rem]" : "w-[76rem]"} `}>
@@ -45,18 +44,18 @@ const Header = ({ signin , loggedIn}) => {
         </div>
         {loggedIn && (
           <div className="flex items-center gap-9 cursor-pointer pr-7">
-           {/* {gptSearchShow && <LanguageSelector/> } */}
-          <div>
-            <SearchButton/>
+            {/* {gptSearchShow && <LanguageSelector/> } */}
+            <div>
+              <SearchButton />
+            </div>
+            <div className="w-20 h-20">
+              <ProfileSignout />
+            </div>
           </div>
-          <div className="w-20 h-20">
-            <ProfileSignout />
-          </div>
-        </div>
         )}
         {signin && (
           <div className="h-full flex items-center text-amber-50">
-           <LanguageSelector/>
+            <LanguageSelector />
             <Link to="/login">
               <button className="py-2 px-4 bg-black rounded-l rounded-r font-bold">
                 Sign In

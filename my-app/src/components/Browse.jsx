@@ -1,15 +1,13 @@
 import Header from "./Header";
-import { useNowPlayingMovies } from "../hooks/useNowPlayingMovies";
+import { useNowPlayingMovies } from "../customHooks/useNowPlayingMovies";
 import BrowseMainContainer from "./BrowseMainContainer";
 import BrowseSecondaryContainer from "./BrowseSecondaryContainer";
-import { usePopularMovies } from "../hooks/usePopulerMovies";
-import { useTopRatedMovies } from "../hooks/useTopRatedMovies";
-import { useUpcomingMovies } from "../hooks/useUpcomingMovies";
+import { usePopularMovies } from "../customHooks/usePopulerMovies";
+import { useTopRatedMovies } from "../customHooks/useTopRatedMovies";
+import { useUpcomingMovies } from "../customHooks/useUpcomingMovies";
 import { useEffect, useRef, useState } from "react";
-import { GtpSearch } from "./GtpSearch";
 import { useSelector } from "react-redux";
 import { SearchContainer } from "./search/SearchContainer";
-import { SearchError } from "./errors_components/SearchError";
 
 const Browse = () => {
   const mainContainer = useRef(null);

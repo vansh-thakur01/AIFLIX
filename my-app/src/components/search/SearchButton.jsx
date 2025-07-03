@@ -1,16 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { SEARCH_SVG } from "../../utils/svg";
-import { searchTmdbMovie } from "../../utils/searchTmdbMove";
+import { searchTmdbMovie } from "../../utils/apiRequests/searchTmdbMove";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addSearchedTmdbMovies,
-  removeSearchedTmdbMovies,
-} from "../../utils/movieSlice";
-import { debouncing } from "../../utils/debouncing";
-import { SearchList } from "../lists_and_cards.js/SearchList";
+import {addSearchedTmdbMovies,removeSearchedTmdbMovies} from "../../utils/store/slice/movieSlice";
+import { debouncing } from "../../utils/helperFunctions/debouncing";
 import { SearchError } from "../errors_components/SearchError";
 import lang from "../../utils/languageConstant";
-import React from "react";
 
 export const SearchButton = () => {
   const [showInputBox, setShowImputBox] = useState(false);
