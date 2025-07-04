@@ -31,21 +31,26 @@ export const AiMovieList = () => {
   }
 
   const aiSearch = async (e) => {
-    e.preventDefault();
-    if (!searchText.current?.value) return;
-    dispatch(removeAiMoviesResult());
-    const { movies } = await askAI(searchText?.current?.value);
-    console.log(movies, "movies name");
-    const arrayOfMoviesPromise = movies.map((name) =>
-      searchTmdbMovie(name).then((arr) => arr[0])
-    );
-
-    const rawData = await Promise.all(arrayOfMoviesPromise);
-    let data = rawData.filter((movie) => movie);
-    if(!data?.length) handleNoMovieFound();
-    console.log(data, "movies data form tmdb");
-    
-    dispatch(addAiMoviesResult(data));
+    try{
+      e.preventDefault();
+      if (!searchText.current?.value) return;
+      dispatch(removeAiMoviesResult());
+      const { movies } = await askAI(searchText?.current?.value);
+      console.log(movies, "movies name");
+      const arrayOfMoviesPromise = movies.map((name) =>
+        searchTmdbMovie(name).then((arr) => arr[0])
+      );
+  
+      const rawData = await Promise.all(arrayOfMoviesPromise);
+      let data = rawData.filter((movie) => movie);
+      if(!data?.length) handleNoMovieFound();
+      console.log(data, "movies data form tmdb");
+      
+      dispatch(addAiMoviesResult(data));
+    }
+    catch(err){
+      handleNoMovieFound();
+    }
   };
 
   useEffect(()=>{
@@ -79,17 +84,15 @@ export const AiMovieList = () => {
       </div>
 
       <div className="h-90 relative">
-        {<div className={`absolute ${(!aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-200`}> <MovieListShimmer /> </div>}
-        {<div className={`absolute top-2 w-[100%] ${(aiNoMovies && !aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-300`}> <AiHaveMovies/></div>}
-        {
+        <div className={`absolute ${(!aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-200`}> <MovieListShimmer /> </div>
+        <div className={`absolute top-2 w-[100%] ${(aiNoMovies && !aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-300`}> <AiHaveMovies/></div>
           <div className={`flex overflow-y-hidden no-scrollbar mb-15 ${(aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-400`}>
             <div className="flex">
               {aiMovies?.map((movie) => (
-                <MovieCard title={movie.title} posterPath={movie.poster_path} />
+                <MovieCard  key={movie.id} title={movie.title} posterPath={movie.poster_path} />
               ))}
             </div>
           </div>
-        }
       </div>
     </div>
   );

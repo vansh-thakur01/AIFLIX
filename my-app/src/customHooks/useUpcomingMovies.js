@@ -9,7 +9,7 @@ export const useUpcomingMovies = () => {
 
   const getMovies = async function () {
     try {
-      const response = await fetch(UPCOMING_MOVIES_API, OPTIONSOBJ);
+      const response = await fetch(UPCOMING_MOVIES_API+"?language=en-US&page=1", OPTIONSOBJ);
       const data = await response.json();
       dispatch(addUpcomingMovies(data));
     } catch (err) {
@@ -18,6 +18,6 @@ export const useUpcomingMovies = () => {
   };
 
   useEffect(() => {
-    !upcomingMovies && getMovies();
+    !upcomingMovies?.length && getMovies();
   }, []);
 };

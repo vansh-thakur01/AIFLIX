@@ -18,7 +18,7 @@ export const MovieListShimmer = () => {
         </div>
         <div className="flex overflow-y-hidden overflow-hidden no-scrollbar mb-15">
           <div className="flex gap-2">
-            {facklist.map((facklist) => (
+            {facklist.map((facklist,i) => (
               <Skeleton
                 width={200}
                 height={290}
@@ -26,6 +26,7 @@ export const MovieListShimmer = () => {
                 baseColor="#3B3B3B"
                 borderRadius="0xp"
                 highlightColor="#525252"
+                key={i}
               />
             ))}
           </div>

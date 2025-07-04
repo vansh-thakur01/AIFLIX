@@ -37,6 +37,7 @@ const Browse = () => {
   usePopularMovies();
   useTopRatedMovies();
   useUpcomingMovies();
+  
 
   return (
     <div className="">

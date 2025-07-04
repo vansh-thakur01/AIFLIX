@@ -44,12 +44,16 @@ export const SearchButton = () => {
     []
   );
 
-  useEffect(() => {
+  const querySearchRequest = ()=>{
     if (inputValue.trim()) fetchQueryMovies(inputValue);
     else {
       removeMovieRequest();
       dispatch(removeSearchedTmdbMovies());
     }
+  }
+
+  useEffect(() => {
+    querySearchRequest();
   }, [inputValue]);
 
   const handleShowInputBox = () => {
@@ -63,7 +67,6 @@ export const SearchButton = () => {
   const handleSearchClose = () => {
     if (!inputValue) {
       setShowImputBox(false);
-      setI;
     }
   };
 
@@ -72,6 +75,11 @@ export const SearchButton = () => {
     dispatch(removeSearchedTmdbMovies());
   };
 
+  const handleFormSubmint = (e)=>{
+    e.preventDefault();
+    querySearchRequest()
+  }
+
   return (
     <div
       onMouseLeave={handleSearchClose}
@@ -79,19 +87,21 @@ export const SearchButton = () => {
     >
       <button onClick={handleShowInputBox}>{SEARCH_SVG}</button>
       <div className="flex items-center relative">
-        <input
-          ref={searchBox}
-          value={inputValue}
-          placeholder="do something usefull"
-          onChange={(e) => setInputValue(e.target.value)}
-          className={`outline-[#E8E8E8]/90 text-[#E8E8E8] outline-3 focus:outline-3 rounded  text-xl  h-9 
+        <form onSubmit={(e)=>handleFormSubmint(e)}>
+          <input
+            ref={searchBox}
+            value={inputValue}
+            placeholder="do something usefull"
+            onChange={(e) => setInputValue(e.target.value)}
+            className={`outline-[#E8E8E8]/90 text-[#E8E8E8] outline-3 focus:outline-3 rounded  text-xl  h-9 
             ${
               showInputBox
                 ? "max-w-96 opacity-100 pointer-events-auto mx-1.5 pl-1.5"
                 : " max-w-0 opacity-0 pointer-events-none -z-10"
             } 
               transition-all duration-500`}
-        />
+          />
+        </form>
         <button
           onClick={handleCrossButton}
           className="absolute right-1 top-1 cursor-pointer transition-all"
@@ -138,16 +148,6 @@ export const SearchButton = () => {
           {lang[selectedLang].Search}
         </button>
       </div>
-
-      {/* <div
-        className={`absolute top-20 ${
-          searchedMovies?.length
-            ? "max-h-56 opacity-100 pointer-events-auto"
-            : "max-h-0 opacity-0 pointer-events-none"
-        }`}
-      >
-        <SearchList moviesData={searchedMovies} />
-      </div> */}
     </div>
   );
 };

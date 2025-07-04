@@ -4,14 +4,16 @@ import VideoBackground from "./VideoBackground";
 import { randomNumber } from "../utils/helperFunctions/randonNumber";
 import { BrowseMainContainerShimmer } from "./shimmerUi/BrowseMainContainerShimmer";
 import Skeleton from "react-loading-skeleton";
+import { useMemo } from "react";
 
 const BrowseMainContainer = () => {
     const movies = useSelector((store) => store.movies?.nowPlayingMovies?.results);
+    const randomMovie =  useMemo(()=>randomNumber(19),[])
     
-    if(!movies) return  <BrowseMainContainerShimmer/>
+    if(!movies?.length) return  <BrowseMainContainerShimmer/>
 
-    
-    const mainMovie = movies[randomNumber(movies.length)];
+
+    const mainMovie = movies[randomMovie];
     
     const {original_title , overview, id} = mainMovie;
 

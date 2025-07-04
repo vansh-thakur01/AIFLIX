@@ -11,7 +11,7 @@ export const useNowPlayingMovies = () => {
 
   const getMovies = async function () {
     try {
-      const response = await fetch(NOW_PLAYING_MOVIES_API, OPTIONSOBJ);
+      const response = await fetch(NOW_PLAYING_MOVIES_API+"?language=en-US&page=1", OPTIONSOBJ);
       const data = await response.json();
       dispatch(addNowPlayingMovies(data));
     } catch (err) {
@@ -20,6 +20,6 @@ export const useNowPlayingMovies = () => {
   };
 
   useEffect(() => {
-    !nowPlayingMovies && getMovies();
+    !nowPlayingMovies?.length && getMovies();
   }, []);
 };

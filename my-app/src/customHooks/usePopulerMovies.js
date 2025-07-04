@@ -9,7 +9,7 @@ export const usePopularMovies = () => {
 
   const getMovies = async function () {
     try {
-      const response = await fetch(POPULAR_MOVIES_API, OPTIONSOBJ);
+      const response = await fetch(POPULAR_MOVIES_API+"?language=en-US&page=1", OPTIONSOBJ);
       const data = await response.json();
       dispatch(addPopularMovies(data));
     } catch (err) {
@@ -18,6 +18,6 @@ export const usePopularMovies = () => {
   };
 
   useEffect(() => {
-    !polularMovies && getMovies();
+    !polularMovies?.length && getMovies();
   }, []);
 };

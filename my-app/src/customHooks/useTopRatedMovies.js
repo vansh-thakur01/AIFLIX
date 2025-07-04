@@ -9,7 +9,7 @@ export const useTopRatedMovies = () => {
 
   const getMovies = async function () {
     try {
-      const response = await fetch(TOP_RATED_MOVIES_API, OPTIONSOBJ);
+      const response = await fetch(TOP_RATED_MOVIES_API+"?language=en-US&page=1", OPTIONSOBJ);
       const data = await response.json();
       dispatch(addTopRatedMovies(data));
     } catch (err) {
@@ -18,6 +18,6 @@ export const useTopRatedMovies = () => {
   };
 
   useEffect(() => {
-    !topRatedMovies && getMovies();
+    !topRatedMovies?.length && getMovies();
   }, []);
 };

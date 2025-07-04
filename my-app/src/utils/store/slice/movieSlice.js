@@ -10,365 +10,6 @@ const movieSlice = createSlice({
     upcomingMovies: null,
     movieTrailer: null,
     searchedTmdbMovies:null,
-    // searchedTmdbMovies: [
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/6G2fLCVm9fiLyHvBrccq6GSe2ih.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284053,
-    //     original_language: "en",
-    //     original_title: "Thor: Ragnarok",
-    //     overview:
-    //       "Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his home-world and the end of Asgardian civilization, at the hands of a powerful new threat, the ruthless Hela.",
-    //     popularity: 12.489,
-    //     poster_path: "/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
-    //     release_date: "2017-10-02",
-    //     title: "Thor: Ragnarok",
-    //     video: false,
-    //     vote_average: 7.585,
-    //     vote_count: 21203,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284054,
-    //     original_language: "en",
-    //     original_title: "Black Panther",
-    //     overview:
-    //       "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
-    //     popularity: 13.5288,
-    //     poster_path: "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    //     release_date: "2018-02-13",
-    //     title: "Black Panther",
-    //     video: false,
-    //     vote_average: 7.373,
-    //     vote_count: 22633,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/3zvZ699gMW2RhWc0GisIukzq0Ls.jpg",
-    //     genre_ids: [28, 12, 14],
-    //     id: 284052,
-    //     original_language: "en",
-    //     original_title: "Doctor Strange",
-    //     overview:
-    //       "After his career is destroyed, a brilliant but arrogant surgeon gets a new lease on life when a sorcerer takes him under her wing and trains him to defend the world against evil.",
-    //     popularity: 9.7843,
-    //     poster_path: "/xf8PbyQcR5ucXErmZNzdKR0s8ya.jpg",
-    //     release_date: "2016-10-25",
-    //     title: "Doctor Strange",
-    //     video: false,
-    //     vote_average: 7.419,
-    //     vote_count: 22599,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/qAzYK4YPSWDc7aa4R43LcwRIAyb.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 299537,
-    //     original_language: "en",
-    //     original_title: "Captain Marvel",
-    //     overview:
-    //       "The story follows Carol Danvers as she becomes one of the universe’s most powerful heroes when Earth is caught in the middle of a galactic war between two alien races. Set in the 1990s, Captain Marvel is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe.",
-    //     popularity: 7.0273,
-    //     poster_path: "/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg",
-    //     release_date: "2019-03-06",
-    //     title: "Captain Marvel",
-    //     video: false,
-    //     vote_average: 6.8,
-    //     vote_count: 16106,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg",
-    //     genre_ids: [878, 28, 12],
-    //     id: 24428,
-    //     original_language: "en",
-    //     original_title: "The Avengers",
-    //     overview:
-    //       "When an unexpected enemy emerges and threatens global safety and security, Nick Fury, director of the international peacekeeping agency known as S.H.I.E.L.D., finds himself in need of a team to pull the world back from the brink of disaster. Spanning the globe, a daring recruitment effort begins!",
-    //     popularity: 33.6401,
-    //     poster_path: "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
-    //     release_date: "2012-04-25",
-    //     title: "The Avengers",
-    //     video: false,
-    //     vote_average: 7.766,
-    //     vote_count: 32190,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/1K3JmSNUN8OpjYsCjc0Hy0SYxAb.jpg",
-    //     genre_ids: [878, 28, 12],
-    //     id: 102899,
-    //     original_language: "en",
-    //     original_title: "Ant-Man",
-    //     overview:
-    //       "Armed with the astonishing ability to shrink in scale but increase in strength, master thief Scott Lang must embrace his inner-hero and help his mentor, Doctor Hank Pym, protect the secret behind his spectacular Ant-Man suit from a new generation of towering threats. Against seemingly insurmountable obstacles, Pym and Lang must plan and pull off a heist that will save the world.",
-    //     popularity: 7.402,
-    //     poster_path: "/rQRnQfUl3kfp78nCWq8Ks04vnq1.jpg",
-    //     release_date: "2015-07-14",
-    //     title: "Ant-Man",
-    //     video: false,
-    //     vote_average: 7.07,
-    //     vote_count: 20144,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/aJn9XeesqsrSLKcHfHP4u5985hn.jpg",
-    //     genre_ids: [878, 12, 28],
-    //     id: 283995,
-    //     original_language: "en",
-    //     original_title: "Guardians of the Galaxy Vol. 2",
-    //     overview:
-    //       "The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill's true parentage.",
-    //     popularity: 13.2664,
-    //     poster_path: "/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg",
-    //     release_date: "2017-04-19",
-    //     title: "Guardians of the Galaxy Vol. 2",
-    //     video: false,
-    //     vote_average: 7.613,
-    //     vote_count: 22056,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/uLtVbjvS1O7gXL8lUOwsFOH4man.jpg",
-    //     genre_ids: [28, 878, 12],
-    //     id: 118340,
-    //     original_language: "en",
-    //     original_title: "Guardians of the Galaxy",
-    //     overview:
-    //       "Light years from Earth, 26 years after being abducted, Peter Quill finds himself the prime target of a manhunt after discovering an orb wanted by Ronan the Accuser.",
-    //     popularity: 7.4926,
-    //     poster_path: "/jPrJPZKJVhvyJ4DmUTrDgmFN0yG.jpg",
-    //     release_date: "2014-07-30",
-    //     title: "Guardians of the Galaxy",
-    //     video: false,
-    //     vote_average: 7.905,
-    //     vote_count: 28629,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/cyecB7godJ6kNHGONFjUyVN9OX5.jpg",
-    //     genre_ids: [28, 878, 12],
-    //     id: 1726,
-    //     original_language: "en",
-    //     original_title: "Iron Man",
-    //     overview:
-    //       "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
-    //     popularity: 18.4035,
-    //     poster_path: "/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
-    //     release_date: "2008-04-30",
-    //     title: "Iron Man",
-    //     video: false,
-    //     vote_average: 7.652,
-    //     vote_count: 27055,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/6G2fLCVm9fiLyHvBrccq6GSe2ih.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284053,
-    //     original_language: "en",
-    //     original_title: "Thor: Ragnarok",
-    //     overview:
-    //       "Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his home-world and the end of Asgardian civilization, at the hands of a powerful new threat, the ruthless Hela.",
-    //     popularity: 12.489,
-    //     poster_path: "/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
-    //     release_date: "2017-10-02",
-    //     title: "Thor: Ragnarok",
-    //     video: false,
-    //     vote_average: 7.585,
-    //     vote_count: 21203,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284054,
-    //     original_language: "en",
-    //     original_title: "Black Panther",
-    //     overview:
-    //       "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
-    //     popularity: 13.5288,
-    //     poster_path: "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    //     release_date: "2018-02-13",
-    //     title: "Black Panther",
-    //     video: false,
-    //     vote_average: 7.373,
-    //     vote_count: 22633,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284054,
-    //     original_language: "en",
-    //     original_title: "Black Panther",
-    //     overview:
-    //       "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
-    //     popularity: 13.5288,
-    //     poster_path: "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    //     release_date: "2018-02-13",
-    //     title: "Black Panther",
-    //     video: false,
-    //     vote_average: 7.373,
-    //     vote_count: 22633,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/6G2fLCVm9fiLyHvBrccq6GSe2ih.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284053,
-    //     original_language: "en",
-    //     original_title: "Thor: Ragnarok",
-    //     overview:
-    //       "Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his home-world and the end of Asgardian civilization, at the hands of a powerful new threat, the ruthless Hela.",
-    //     popularity: 12.489,
-    //     poster_path: "/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
-    //     release_date: "2017-10-02",
-    //     title: "Thor: Ragnarok",
-    //     video: false,
-    //     vote_average: 7.585,
-    //     vote_count: 21203,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284054,
-    //     original_language: "en",
-    //     original_title: "Black Panther",
-    //     overview:
-    //       "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
-    //     popularity: 13.5288,
-    //     poster_path: "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    //     release_date: "2018-02-13",
-    //     title: "Black Panther",
-    //     video: false,
-    //     vote_average: 7.373,
-    //     vote_count: 22633,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284054,
-    //     original_language: "en",
-    //     original_title: "Black Panther",
-    //     overview:
-    //       "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
-    //     popularity: 13.5288,
-    //     poster_path: "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    //     release_date: "2018-02-13",
-    //     title: "Black Panther",
-    //     video: false,
-    //     vote_average: 7.373,
-    //     vote_count: 22633,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/6G2fLCVm9fiLyHvBrccq6GSe2ih.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284053,
-    //     original_language: "en",
-    //     original_title: "Thor: Ragnarok",
-    //     overview:
-    //       "Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his home-world and the end of Asgardian civilization, at the hands of a powerful new threat, the ruthless Hela.",
-    //     popularity: 12.489,
-    //     poster_path: "/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
-    //     release_date: "2017-10-02",
-    //     title: "Thor: Ragnarok",
-    //     video: false,
-    //     vote_average: 7.585,
-    //     vote_count: 21203,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284054,
-    //     original_language: "en",
-    //     original_title: "Black Panther",
-    //     overview:
-    //       "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
-    //     popularity: 13.5288,
-    //     poster_path: "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    //     release_date: "2018-02-13",
-    //     title: "Black Panther",
-    //     video: false,
-    //     vote_average: 7.373,
-    //     vote_count: 22633,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284054,
-    //     original_language: "en",
-    //     original_title: "Black Panther",
-    //     overview:
-    //       "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
-    //     popularity: 13.5288,
-    //     poster_path: "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    //     release_date: "2018-02-13",
-    //     title: "Black Panther",
-    //     video: false,
-    //     vote_average: 7.373,
-    //     vote_count: 22633,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/6G2fLCVm9fiLyHvBrccq6GSe2ih.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284053,
-    //     original_language: "en",
-    //     original_title: "Thor: Ragnarok",
-    //     overview:
-    //       "Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his home-world and the end of Asgardian civilization, at the hands of a powerful new threat, the ruthless Hela.",
-    //     popularity: 12.489,
-    //     poster_path: "/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
-    //     release_date: "2017-10-02",
-    //     title: "Thor: Ragnarok",
-    //     video: false,
-    //     vote_average: 7.585,
-    //     vote_count: 21203,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284054,
-    //     original_language: "en",
-    //     original_title: "Black Panther",
-    //     overview:
-    //       "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
-    //     popularity: 13.5288,
-    //     poster_path: "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    //     release_date: "2018-02-13",
-    //     title: "Black Panther",
-    //     video: false,
-    //     vote_average: 7.373,
-    //     vote_count: 22633,
-    //   },
-    //   {
-    //     adult: false,
-    //     backdrop_path: "/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
-    //     genre_ids: [28, 12, 878],
-    //     id: 284054,
-    //     original_language: "en",
-    //     original_title: "Black Panther",
-    //     overview:
-    //       "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
-    //     popularity: 13.5288,
-    //     poster_path: "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    //     release_date: "2018-02-13",
-    //     title: "Black Panther",
-    //     video: false,
-    //     vote_average: 7.373,
-    //     vote_count: 22633,
-    //   },
-    // ],
   },
 
   reducers: {
@@ -382,19 +23,42 @@ const movieSlice = createSlice({
       state.bgTrailer = action.payload;
     },
     addNowPlayingMovies: (state, action) => {
-      state.nowPlayingMovies = action.payload;
+      if (state.nowPlayingMovies) {
+        let prev = state.nowPlayingMovies.results;
+        let curr = action.payload.results;
+        state.nowPlayingMovies.results = [...prev, ...curr];
+        state.nowPlayingMovies.page++;
+      }
+      else state.nowPlayingMovies = action.payload;
     },
 
     addPopularMovies: (state, action) => {
-      state.popularMovies = action.payload;
+      if(state.popularMovies){
+        let prev = state.popularMovies.results
+        let curr = action.payload.results;
+        state.popularMovies.results = [...prev,...curr];
+        state.popularMovies.page++;
+      }
+      else state.popularMovies = action.payload;
     },
 
     addTopRatedMovies: (state, action) => {
-      state.topRatedMovies = action.payload;
+      if (state.topRatedMovies) {
+        let prev = state.topRatedMovies.results;
+        let curr = action.payload.results;
+        state.topRatedMovies.results = [...prev, ...curr];
+        state.topRatedMovies.page++;
+      } else state.topRatedMovies = action.payload;
     },
 
     addUpcomingMovies: (state, action) => {
-      state.upcomingMovies = action.payload;
+      if (state.upcomingMovies) {
+        let prev = state.upcomingMovies.results;
+        let curr = action.payload.results;
+        state.upcomingMovies.results = [...prev, ...curr];
+        state.upcomingMovies.page++;
+      }
+      else state.upcomingMovies = action.payload;
     },
 
     addMovieTrailer: (state, action) => {

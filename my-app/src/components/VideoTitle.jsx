@@ -15,7 +15,7 @@ const VideoTitle = ({title, overview}) => {
     const actualHeigth = e.scrollHeight;
     setTitleHeight(actualHeigth > maxTwoLineHeight);
   
-  });
+  },[]);
 
   return (
     <div className="absolute z-6 h-screen flex items-center w-full px-14 bg-gradient-to-r from-black to-transparent to-[60%]">

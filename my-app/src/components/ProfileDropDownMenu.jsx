@@ -7,11 +7,9 @@ import lang from "../utils/languageConstant";
 export const ProfileDropDownMenu = ({ playForward, playBackward }) => {
   const [activeMenuOption, setActiveMenuOption] = useState(false);
   let [activateMenuOption, setActivateMenuOption] = useState({});
-  const [currLang, setcurrLang] = useState("eng");
   const selectedLang = useSelector((store) => store.config.lang);
   const dispatch = useDispatch();
 
-  console.log("saf");
   const handleSignout = function () {
     signOut(auth)
       .then(() => {
@@ -36,7 +34,7 @@ export const ProfileDropDownMenu = ({ playForward, playBackward }) => {
     if (e.target.tagName !== "P") return;
     dispatch(changeLang(e.target.dataset.lang));
   };
-  console.log(activateMenuOption?.manage, "000000000000000000");
+
   return (
     <div className="">
       <div className="h-5 pointer-events-none text-gray-300 flex justify-end pr-5">
@@ -109,7 +107,7 @@ export const ProfileDropDownMenu = ({ playForward, playBackward }) => {
             onMouseLeave={playBackward}
             className="w-fit whitespace-nowrap"
           >
-            {lang[selectedLang].SignoutofMetflix}
+            {lang[selectedLang].SignoutofAIFLIX}
           </button>
         </div>
       </div>

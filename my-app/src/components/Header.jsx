@@ -39,8 +39,8 @@ const Header = ({ signin, loggedIn }) => {
   return (
     <div className={`${loggedIn ? "w-[140rem]" : "w-[76rem]"} `}>
       <div className=" h-[86px] flex justify-between items-center">
-        <div className="w-54 mt-4 pb-3">
-          <img src={NETFLIX_IMG} alt="logo"></img>
+        <div className="w-44 mt-4 pb-3">
+          <img src="./AIFLIX.png" alt="logo"></img>
         </div>
         {loggedIn && (
           <div className="flex items-center gap-9 cursor-pointer pr-7">

@@ -20,7 +20,7 @@ export const askAI = async (query) => {
           "X-Title": "ReactTestClient",
         },
         body: JSON.stringify({
-          model: "google/gemma-3-27b-it:free",
+          model: "mistralai/mistral-7b-instruct:free",
           messages: [
             {
               role: "system",
@@ -36,11 +36,8 @@ export const askAI = async (query) => {
       });
   
       const data = await res.json();
-      console.log(data,"raw movies name from ai");
       let stringObj = (data.choices[0]?.message?.content).replace(/```json|```/g, "");
-      console.log(stringObj)
       let jsonObj = JSON.parse(stringObj);
-      console.log(jsonObj,typeof jsonObj,"converted movies name into json obj");
 
       return jsonObj
     }
@@ -50,5 +47,3 @@ export const askAI = async (query) => {
     }
 
   };
-
-  // askAI();

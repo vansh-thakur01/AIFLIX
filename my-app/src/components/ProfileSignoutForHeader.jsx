@@ -88,7 +88,6 @@ export const ProfileSignout = () => {
           />
         </div>
       )}
-      <div>{/* <button onClick={handelSignout}>Sign Out?</button> */}</div>
     </div>
   );
 };

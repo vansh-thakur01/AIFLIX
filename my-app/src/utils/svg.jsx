@@ -54,7 +54,7 @@ export const crossMark_SVG = (
       r="256"
       fill="#f44336"
       stroke="black"
-      stroke-width="20"
+      strokeWidth="20"
     />
     <line
       x1="160"
@@ -62,8 +62,8 @@ export const crossMark_SVG = (
       x2="352"
       y2="352"
       stroke="black"
-      stroke-width="40"
-      stroke-linecap="round"
+      strokeWidth="40"
+      strokeLinecap="round"
     />
     <line
       x1="352"
@@ -71,8 +71,8 @@ export const crossMark_SVG = (
       x2="160"
       y2="352"
       stroke="black"
-      stroke-width="40"
-      stroke-linecap="round"
+      strokeWidth="40"
+      strokeLinecap="round"
     />
   </svg>
 );
@@ -83,11 +83,11 @@ export const bird_SVG = (
     version="1.1"
     id="Capa_1"
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
     width="80px"
     height="80px"
     viewBox="0 0 579.324 579.324"
-    xml:space="preserve"
+    xmlSpace="preserve"
   >
     <g>
       <g>
