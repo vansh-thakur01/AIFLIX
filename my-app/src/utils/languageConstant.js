@@ -15,6 +15,7 @@ const lang = {
     AskFromAI: "Ask From AI",
     aiSearchPlaceHolder:
       "Today i want to see Marvel movies recommend me best ones",
+    SignIn: "Sign In",
   },
   hindi: {
     Search: "खोज",
@@ -32,6 +33,7 @@ const lang = {
     AskFromAI: "एआई से पूछें",
     aiSearchPlaceHolder:
       "आज मैं मार्वल फिल्में देखना चाहता हूं, मुझे सर्वश्रेष्ठ फिल्में सुझाएं।",
+    SignIn: "दाखिल करना",
   },
 };
 

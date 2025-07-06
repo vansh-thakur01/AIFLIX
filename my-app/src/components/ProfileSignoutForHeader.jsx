@@ -13,13 +13,17 @@ export const ProfileSignout = () => {
   const reverseTimer = useRef(null);
 
   useEffect(() => {
+    const video = videoRef.current;
+    if(video && video.readyState) {
+      setVideoLoad(true);
+    }
+
     return () => {
       if (reverseTimer.current) clearInterval(reverseTimer.current);
     };
   }, []);
 
   const handleShowMenu = function (flag) {
-    console.log(flag);
     if (flag === "toggle") setShowMenu(!showMenu);
     else setShowMenu(flag);
   };
@@ -65,10 +69,9 @@ export const ProfileSignout = () => {
 
         <video
           ref={videoRef}
-          className={`w-20 h-20 ${videoLoad ? "opacity-100" : "opacity-0"}`}
+          className={`w-20 h-20 ${videoLoad ? "opacity-100" : "opacity-50"}`}
           muted
-          preload="metadata"
-          onLoadedData={() => setVideoLoad(true)}
+          preload="auto"
         >
           <source src="/profileMonkeyyy.mp4" type="video/mp4"></source>
         </video>

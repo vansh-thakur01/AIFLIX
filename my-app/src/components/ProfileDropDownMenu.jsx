@@ -1,8 +1,9 @@
 import { signOut } from "firebase/auth";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLang } from "../utils/store/slice/configSlice";
 import lang from "../utils/languageConstant";
+import { auth } from "../utils/firebase/fireBase";
 
 export const ProfileDropDownMenu = ({ playForward, playBackward }) => {
   const [activeMenuOption, setActiveMenuOption] = useState(false);
@@ -100,12 +101,12 @@ export const ProfileDropDownMenu = ({ playForward, playBackward }) => {
           }`}
         >
           <div>{lang[selectedLang].Account}</div>
-          <div>{lang[selectedLang].HelpCenter}</div>
+          <div className="">{lang[selectedLang].HelpCenter}</div>
           <button
             onClick={handleSignout}
             onMouseEnter={playForward}
             onMouseLeave={playBackward}
-            className="w-fit whitespace-nowrap"
+            className="w-fit whitespace-nowrap cursor-pointer"
           >
             {lang[selectedLang].SignoutofAIFLIX}
           </button>
