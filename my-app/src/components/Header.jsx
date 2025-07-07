@@ -54,11 +54,11 @@ const Header = ({ signin, loggedIn }) => {
           )}
         </div>
         {loggedIn && (
-          <div className="flex items-center gap-9 cursor-pointer pr-7">
+          <div className="flex items-center gap-9 pr-7">
             <div className="">
               <SearchButton />
             </div>
-            <div className="w-20 h-20">
+            <div className="w-20 h-20 cursor-pointer">
               <ProfileSignout />
             </div>
           </div>

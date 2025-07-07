@@ -85,7 +85,7 @@ export const SearchButton = () => {
       onMouseLeave={handleSearchClose}
       className={`flex justify-center items-center relative`}
     >
-      <button id="search" className="cursor-pointer" onClick={handleShowInputBox}>{SEARCH_SVG}</button>
+      <button id="search" className="cursor-pointer " onClick={handleShowInputBox}>{SEARCH_SVG}</button>
       <div className="flex items-center relative">
         <form onSubmit={(e)=>handleFormSubmint(e)}>
           <input

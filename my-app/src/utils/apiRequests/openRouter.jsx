@@ -14,8 +14,8 @@ export const askAI = async (query) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + import.meta.env.VITE_OPENROUTER_API_KEY, // ⚠️ Use your OpenRouter API key (TEMPORARILY)
-          "HTTP-Referer": "http://localhost:5173", // your domain
+          Authorization: "Bearer " + import.meta.env.VITE_OPENROUTER_API_KEY, // 
+          "HTTP-Referer": "https://*.netlify.app/", // 
           "X-Title": "ReactTestClient",
         },
         body: JSON.stringify({
