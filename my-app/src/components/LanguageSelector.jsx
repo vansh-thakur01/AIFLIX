@@ -10,7 +10,6 @@ export function LanguageSelector() {
 
   const handleChange = (e) => {
     dispatch(changeLang(e.target.value));
-    console.log("Selected:", e.target.value);
     setValue(e.target.value);
   };
 

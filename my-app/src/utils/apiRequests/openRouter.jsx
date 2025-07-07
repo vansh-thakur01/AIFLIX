@@ -10,7 +10,6 @@ export const askAI = async (query) => {
 
   
   try{
-      console.log(`AI request `);
       const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {

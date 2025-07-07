@@ -119,7 +119,7 @@ export const Login = () => {
               ></input>
               <button
                 type="button"
-                className="hover:bg-gray-700 transition-color duration-500 rounded-[100%] absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center"
+                className="hover:bg-gray-700 transition-color cursor-pointer duration-500 rounded-[100%] absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center"
                 onClick={() => setShowPswd(!showPswd)}
               >
                 {showPswd ? "👀" : "🙈"}
@@ -133,7 +133,7 @@ export const Login = () => {
           </form>
           <button
             type="submit"
-            className="mb-10 w-full px-5 py-3 bg-red-700 rounded font-semibold text-white text-lg opacity-100"
+            className="mb-10 w-full px-5 py-3 cursor-pointer bg-red-700 rounded font-semibold text-white text-lg opacity-100"
             onClick={handelSignInSignUp}
           >
             {signup ? "Sign Up" : "Sign In"}

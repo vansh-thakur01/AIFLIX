@@ -24,7 +24,6 @@ const Header = ({ signin, loggedIn }) => {
         location.pathname !== "/browse" && navigate("/browse");
       } else {
         dispatch(removeUser());
-        console.log(location);
         if(location.pathname !== "/" && location.pathname !== "/login")  navigate("/");
       }
     });

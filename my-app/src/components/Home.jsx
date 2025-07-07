@@ -38,7 +38,7 @@ const Home = () => {
             <div className="pointer-events-none absolute left-0 top-0 h-full w-10 bg-gradient-to-r from-black/90 to-transparent z-10" />
             <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l  from-black/90 to-transparent z-10" />
             <div className="flex  gap-9 hover:[animation-play-state:paused] pt-5 animate-scroll-left [&>img]:w-15">
-              {images.map(src =><img className="rounded-xl hover:scale-120 transition-all duration-400"  src={src}/>)}
+              {images.map((src,i) =><img key={i} className="rounded-xl hover:scale-120 transition-all duration-400"  src={src}/>)}
             </div>
           </div>
         </div>

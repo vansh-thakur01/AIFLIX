@@ -14,7 +14,7 @@ export const ProfileDropDownMenu = ({ playForward, playBackward }) => {
   const handleSignout = function () {
     signOut(auth)
       .then(() => {
-        console.log("done");
+        // console.log("done");
       })
       .catch((error) => {
         // An error happened.
