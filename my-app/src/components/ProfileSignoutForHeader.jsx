@@ -1,10 +1,6 @@
-import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../utils/firebase/fireBase";
 import { useEffect, useRef, useState } from "react";
-import { ProfileDropDownMenu } from "./profileDropDownMenu";
+import { ProfileDropDownMenu } from "./ProfileDropDownMenu";
 import { ProfileSignoutForHeaderShimmer } from "./shimmerUi/ProfileSignoutForHeaderShimmer";
-import Skeleton from "react-loading-skeleton";
 
 export const ProfileSignout = () => {
   const [videoLoad, setVideoLoad] = useState(false);

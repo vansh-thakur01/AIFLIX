@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import MovieCard from "./MovieCard"
-import { NOW_PLAYING_MOVIES_API, OPTIONSOBJ,POPULAR_MOVIES_API,TOP_RATED_MOVIES_API,UPCOMING_MOVIES_API } from "../utils/constants";
-// import { addPopularMovies } from "../utils/store/slice/movieSlice";
+import { OPTIONSOBJ } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { MovieApiList } from "../utils/helperFunctions/movieApiActionList";
 
