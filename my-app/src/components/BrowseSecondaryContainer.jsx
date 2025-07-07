@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
 import lang from "../utils/languageConstant"
-import { AiMovieList } from "./aiMovieList";
+import { AiMovieList } from "./AiMovieList";
 import { MovieListShimmer } from "./shimmerUi/MovieListShimmer";
 
 const BrowseSecondaryContainer = () => {
