@@ -43,7 +43,7 @@ const MovieList = ({name,title, movies}) => {
 
     },[page]);
     return (
-      <div  className="ml-15">
+      <div  className="ml-15 cursor-pointer">
         <h1 className=" text-[26px] border-l-3 pl-2 font-semibold mb-2 text-amber-50 ">{title}</h1>
         <div ref={scrollableList} className="flex overflow-y-hidden no-scrollbar mb-15">
           <div  className="flex">

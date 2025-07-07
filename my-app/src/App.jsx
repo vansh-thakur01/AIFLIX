@@ -7,7 +7,7 @@ import store from "./utils/store/appStore";
 
 function App() {
   return (
-    <div>
+    <div className="scroll-smooth">
       <Provider store={store}>
         <Body />
       </Provider>

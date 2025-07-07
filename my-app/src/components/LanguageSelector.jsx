@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLang } from "../utils/store/slice/configSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export function LanguageSelector() {
-  const [value, setValue] = useState("eng");
+  const defaultlng = useSelector(store => store.config.lang);
+  const [value, setValue] = useState(defaultlng);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setValue(e.target.value);
     dispatch(changeLang(e.target.value));
     console.log("Selected:", e.target.value);
+    setValue(e.target.value);
   };
 
   return (

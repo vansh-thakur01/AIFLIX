@@ -56,10 +56,12 @@ const Browse = () => {
           <SearchContainer moviesData={tmdbSearchMovies} />
         ) : (
           <div>
-            <div ref={mainContainer}>
+            <div id="homeDisplay" ref={mainContainer}>
               <BrowseMainContainer />
             </div>
+            <section id="movies">
             <BrowseSecondaryContainer />
+            </section>
           </div>
         )}
       </div>

@@ -53,9 +53,11 @@ export const ProfileDropDownMenu = ({ playForward, playBackward }) => {
             onClick={() => handleOpenMenu("manage")}
             className={`${
               (activeMenuOption || activateMenuOption.manage) && "underline"
-            }`}
+            } `}
           >
-            {lang[selectedLang].ManageProfile}
+            <div className="cursor-pointer">
+              {lang[selectedLang].ManageProfile}
+            </div>
           </button>
 
           <div
@@ -63,7 +65,7 @@ export const ProfileDropDownMenu = ({ playForward, playBackward }) => {
               activateMenuOption?.manage
                 ? "mt-2 max-h-80 opacity-100 pointer-events-auto"
                 : "max-h-0 opacity-0 pointer-events-none"
-            }`}
+            } `}
           >
             <div className="flex gap-4 items-center">
               <p onClick={() => handleOpenMenu("language")}>
@@ -100,8 +102,8 @@ export const ProfileDropDownMenu = ({ playForward, playBackward }) => {
             selectedLang === "hindi" && "text-[17px]"
           }`}
         >
-          <div>{lang[selectedLang].Account}</div>
-          <div className="">{lang[selectedLang].HelpCenter}</div>
+          <div className="cursor-default">{lang[selectedLang].Account}</div>
+          <div className="cursor-default">{lang[selectedLang].HelpCenter}</div>
           <button
             onClick={handleSignout}
             onMouseEnter={playForward}

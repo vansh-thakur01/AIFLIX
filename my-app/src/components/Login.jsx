@@ -74,7 +74,7 @@ export const Login = () => {
     <div>
       <BasicBgWithHeader Header={() => <Header signin={false} />} shade={5} />
       <div className="bg-black absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-87">
-        <div className="px-14 pb-25 pt-16 w-[500px] h-[700px]">
+        <div className="px-14 pb-25 pt-16 w-[500px] h-[600px]">
           <h2 className="text-amber-50 text-4xl mb-8 font-bold">
             {signup ? "Sign Up" : "Sign In"}
           </h2>
@@ -149,7 +149,12 @@ export const Login = () => {
               </span>
             </p>
           </div>
+          <p className="text-[14px] text-white/60 mt-4">
+            This page is secured with Firebase Authentication to protect your
+            account.
+          </p>
         </div>
+      
       </div>
     </div>
   );

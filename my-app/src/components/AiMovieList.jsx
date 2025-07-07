@@ -87,7 +87,7 @@ export const AiMovieList = () => {
         <div className={`absolute ${(!aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-200`}> <MovieListShimmer /> </div>
         <div className={`absolute top-2 w-[100%] ${(aiNoMovies && !aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-300`}> <AiHaveMovies/></div>
           <div className={`flex overflow-y-hidden no-scrollbar mb-15 ${(aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-400`}>
-            <div className="flex">
+            <div className="flex cursor-pointer">
               {aiMovies?.map((movie) => (
                 <MovieCard  key={movie.id} title={movie.title} posterPath={movie.poster_path} />
               ))}

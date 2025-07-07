@@ -57,7 +57,7 @@ export const SearchButton = () => {
   }, [inputValue]);
 
   const handleShowInputBox = () => {
-    if (showInputBox === false) setInputValue("");
+     setInputValue("");
     if (searchBox?.current) {
       searchBox.current.focus();
     }
@@ -85,10 +85,11 @@ export const SearchButton = () => {
       onMouseLeave={handleSearchClose}
       className={`flex justify-center items-center relative`}
     >
-      <button onClick={handleShowInputBox}>{SEARCH_SVG}</button>
+      <button id="search" className="cursor-pointer" onClick={handleShowInputBox}>{SEARCH_SVG}</button>
       <div className="flex items-center relative">
         <form onSubmit={(e)=>handleFormSubmint(e)}>
           <input
+            id="searchInput"
             ref={searchBox}
             value={inputValue}
             placeholder="do something usefull"
@@ -130,8 +131,8 @@ export const SearchButton = () => {
       <div
         className={`absolute -bottom-12 left-12.5 ${
           showInputBox && noResult
-            ? "opacity-100 animate-giggle-once"
-            : "opacity-0 -z-10"
+            ? "opacity-100 pointer-events-none animate-giggle-once"
+            : "opacity-0 pointer-events-none -z-10"
         } transition-all duration-500`}
       >
         <SearchError />
@@ -143,7 +144,7 @@ export const SearchButton = () => {
       >
         <button
           onClick={handleShowInputBox}
-          className={`text-[17px] text-white pb-1  font-semibold`}
+          className={`text-[17px] text-white pb-1 cursor-pointer font-semibold`}
         >
           {lang[selectedLang].Search}
         </button>

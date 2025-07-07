@@ -13,10 +13,7 @@ export const ProfileSignout = () => {
   const reverseTimer = useRef(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if(video && video.readyState) {
-      setVideoLoad(true);
-    }
+    setVideoLoad(true);
 
     return () => {
       if (reverseTimer.current) clearInterval(reverseTimer.current);

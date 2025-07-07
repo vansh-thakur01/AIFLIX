@@ -35,12 +35,28 @@ const Header = ({ signin, loggedIn }) => {
   return (
     <div className={`${loggedIn ? "w-[140rem]" : "w-[76rem]"} `}>
       <div className=" h-[86px] flex justify-between items-center">
-        <div className="w-40 mt-4 pb-3">
+        <div className="w-40 mt-4 pb-3 flex gap-14">
           <img src="./AIFLIX.png" alt="logo"></img>
+          {loggedIn && (
+            <div className="text-white/85 text-[19px] font-semibold flex gap-9">
+              <button onClick={()=>{
+                let e = document.querySelector("#search");
+                let e2 = document.querySelector("#homeDisplay");
+                let input = document.querySelector("#searchInput");
+                if (input.classList.contains("opacity-100")) e.click();
+                if(e2) e2.scrollIntoView({behavior:"smooth"})
+
+              }}  className="cursor-pointer">{lang[language].Home}</button>
+              <button onClick={()=>{
+                let e = document.querySelector("#movies");
+                e.scrollIntoView({behavior:"smooth"})
+              }} className="cursor-pointer">{lang[language].Movies}</button>
+            </div>
+          )}
         </div>
         {loggedIn && (
           <div className="flex items-center gap-9 cursor-pointer pr-7">
-            <div>
+            <div className="">
               <SearchButton />
             </div>
             <div className="w-20 h-20">
@@ -52,7 +68,7 @@ const Header = ({ signin, loggedIn }) => {
           <div className="h-full gap-3 flex items-center text-amber-50">
             <LanguageSelector />
             <Link to="/login">
-              <button className="py-1.5 px-4 bg-red-500 rounded-l rounded-r font-bold">
+              <button className="py-1.5 cursor-pointer px-4 bg-red-500 rounded-l rounded-r font-bold">
                 {lang[language].SignIn}
               </button>
             </Link>
