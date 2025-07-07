@@ -15,8 +15,8 @@ const BrowseSecondaryContainer = () => {
   if(!nowPlaying  || !popularMovies || !topRatedMovies || !upcomingMovies){ 
     return (
     <div className="bg-gray-950">
-      <div className="relative z-9 -mt-40 ">
-        {fackMovieCategory.map((fack,i)=> <div key={i} ><MovieListShimmer/></div>)}
+      <div className="relative z-9 -mt-20">
+        {fackMovieCategory.map((fack,i)=> <div className="ml-13" key={i} ><MovieListShimmer/></div>)}
       </div>
     </div>);
   }
@@ -25,7 +25,7 @@ const BrowseSecondaryContainer = () => {
 
   return (
     <div className="bg-gray-950">
-      <div className="relative z-9 -mt-40 ">
+      <div className="relative z-9 -mt-28 ">
         <AiMovieList/>
         <MovieList name="nowPlaying" title={lang[currLang].NowPlaying} movies={nowPlaying.results}/>
         <MovieList name="popular" title={lang[currLang].TrendingNow  } movies={popularMovies.results}/>

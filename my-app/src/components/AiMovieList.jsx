@@ -58,12 +58,11 @@ export const AiMovieList = () => {
     
   },[aiMovies])
 
-  //   if(!aiMovies) return (<MovieListShimmer/>)
 
   return (
-    <div className="ml-15 relative">
+    <div className="ml-12 relative">
       <div className={`flex ${selectedLang === "hindi" && "tracking-widest"}`}>
-        <h1 className=" text-[26px] border-l-3 pl-2 font-semibold mb-2 text-amber-50 ">
+        <h1 className=" text-[17px] border-l-3 pl-2 font-semibold mb-2 text-amber-50 ">
           {`${lang[selectedLang].AskFromAI}:`}
         </h1>
         <div>
@@ -72,18 +71,18 @@ export const AiMovieList = () => {
               ref={searchText}
               type="text"
               placeholder={lang[selectedLang].aiSearchPlaceHolder}
-              className={`focuse text-gray-200 text-[26px] min-w-[127rem]  focus:border-none border-none focus:ring-0 outline-none focus:outline-none caret-white ${
-                selectedLang === "hindi" && "text-[27px]"
+              className={`focuse text-gray-200 text-[17px] min-w-[127rem]  focus:border-none border-none focus:ring-0 outline-none focus:outline-none caret-white ${
+                selectedLang === "hindi" && "text-[17px]"
               }`}
             ></input>
           </form>
         </div>
       </div>
 
-      <div className="h-90 relative">
-        <div className={`absolute ${(!aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-200`}> <MovieListShimmer /> </div>
-        <div className={`absolute top-2 w-[100%] ${(aiNoMovies && !aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-300`}> <AiHaveMovies/></div>
-          <div className={`flex overflow-y-hidden no-scrollbar mb-15 ${(aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-400`}>
+      <div className="h-53 relative">
+        <div className={`absolute -top-1 ${(!aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-200`}> <MovieListShimmer /> </div>
+        <div className={`absolute w-[100%] ${(aiNoMovies && !aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-300`}> <AiHaveMovies/></div>
+          <div className={`flex overflow-y-hidden no-scrollbar mb-12 ${(aiMovies) ? "opacity-100" : "opacity-0"} transition-all duration-400`}>
             <div className="flex cursor-pointer">
               {aiMovies?.map((movie,i) => (
                 <MovieCard  key={movie.id + i} title={movie.title} posterPath={movie.poster_path} />

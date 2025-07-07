@@ -94,7 +94,7 @@ export const SearchButton = () => {
             value={inputValue}
             placeholder="do something usefull"
             onChange={(e) => setInputValue(e.target.value)}
-            className={`outline-[#E8E8E8]/90 text-[#E8E8E8] outline-3 focus:outline-3 rounded  text-xl  h-9 
+            className={`outline-[#E8E8E8]/90 text-[#E8E8E8] outline-2 focus:outline-2 rounded   h-6 
             ${
               showInputBox
                 ? "max-w-96 opacity-100 pointer-events-auto mx-1.5 pl-1.5"
@@ -109,8 +109,8 @@ export const SearchButton = () => {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="17"
+            height="17"
             fill="white"
             viewBox="0 0 24 24"
             className={`${
@@ -129,7 +129,7 @@ export const SearchButton = () => {
         </button>
       </div>
       <div
-        className={`absolute -bottom-12 left-12.5 ${
+        className={`absolute -bottom-8 left-11 ${
           showInputBox && noResult
             ? "opacity-100 pointer-events-none animate-giggle-once"
             : "opacity-0 pointer-events-none -z-10"
@@ -144,7 +144,7 @@ export const SearchButton = () => {
       >
         <button
           onClick={handleShowInputBox}
-          className={`text-[17px] text-white pb-1 cursor-pointer font-semibold`}
+          className={`text-[13.5px] text-white/95 pb-1 cursor-pointer font-semibold`}
         >
           {lang[selectedLang].Search}
         </button>

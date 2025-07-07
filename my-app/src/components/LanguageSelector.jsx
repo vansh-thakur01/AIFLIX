@@ -16,7 +16,7 @@ export function LanguageSelector() {
   return (
     <div className="relative w-max">
       {/* Styled button UI */}
-      <div className="text-amber-50 flex items-center border-2 px-3.5 py-0.5 rounded-l rounded-r ">
+      <div className="text-amber-50 flex items-center border-2 px-2 py-0.5 rounded-l rounded-r ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -31,7 +31,7 @@ export function LanguageSelector() {
             fill="currentColor"
           ></path>
         </svg>
-        <span className="text-xl w-17 text-center ">
+        <span className=" w-17 text-center ">
           {value === "eng" ? "English" : "हिंदीं"}
         </span>
         <div className="pointer-events-none text-gray-300 ml-2">▼</div>

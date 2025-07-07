@@ -4,7 +4,7 @@ export const SEARCH_SVG = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 32 32"
-      className="w-11 h-11 text-white"
+      className="w-8 h-8 text-white"
       fill="currentColor"
     >
       {/* Outer magnifying glass */}
@@ -43,8 +43,8 @@ c1.946,1.123,3.338,2.937,3.92,5.107C44.053,28.249,43.754,30.517,42.631,32.462z"
 
 export const crossMark_SVG = (
   <svg
-    width="25"
-    height="25"
+    width="20"
+    height="20"
     viewBox="-19 0 550 514"
     xmlns="http://www.w3.org/2000/svg"
   >

@@ -62,7 +62,7 @@ export const ProfileSignout = () => {
 
         <video
           ref={videoRef}
-          className={`w-20 h-20 ${videoLoad ? "opacity-100" : "opacity-50"}`}
+          className={`w-14 h-14 ${videoLoad ? "opacity-100" : "opacity-50"}`}
           muted
           preload="auto"
         >

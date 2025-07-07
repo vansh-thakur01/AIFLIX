@@ -1,7 +1,5 @@
-import { useDispatch } from "react-redux";
 import { OPTIONSOBJ } from "../constants";
 import { TMDB_MOVIE_SEARCH_API } from "../constants";
-import { addSearchedTmdbMovies } from "../store/slice/movieSlice";
 
 export const searchTmdbMovie = async (movieName, fullRaw) => {
   try {

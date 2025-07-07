@@ -2,12 +2,12 @@ import Skeleton from 'react-loading-skeleton';
 
 export const VideoTitleShimmer = () => {
     return (
-      <div className="absolute top-0.5 z-6 h-screen flex items-center w-full px-14 ">
+      <div className="absolute top-5 z-6 h-screen flex items-center w-full px-12 ">
         <div className="text-amber-50">
-         <div className='mb-5'>
+         <div className='mb-3'>
             <Skeleton
-              width={540}
-              height={100}
+              width={380}
+              height={70}
               duration={2}
               baseColor="#3B3B3B"
               borderRadius="0xp"
@@ -15,42 +15,26 @@ export const VideoTitleShimmer = () => {
               className='mb-1'
             />
             <Skeleton
-              width={500}
-              height={100}
+              width={300}
+              height={70}
               duration={2}
               baseColor="#3B3B3B"
               borderRadius="0xp"
               highlightColor="#525252"
             />
          </div>
-          <div className="w-2xl mb-5">
+          <div className=" mb-2  leading-4.5">
             <Skeleton
               width={540}
-              height={17}
+              height={12}
               duration={2}
               baseColor="#3B3B3B"
               borderRadius="0xp"
               highlightColor="#525252"
             />
             <Skeleton
-              width={520}
-              height={17}
-              duration={2}
-              baseColor="#3B3B3B"
-              borderRadius="0xp"
-              highlightColor="#525252"
-            />
-            <Skeleton
-              width={500}
-              height={17}
-              duration={2}
-              baseColor="#3B3B3B"
-              borderRadius="0xp"
-              highlightColor="#525252"
-            />
-            <Skeleton
-              width={480}
-              height={17}
+              width={510}
+              height={12}
               duration={2}
               baseColor="#3B3B3B"
               borderRadius="0xp"
@@ -59,16 +43,16 @@ export const VideoTitleShimmer = () => {
           </div>
           <div className="flex gap-3">
             <Skeleton
-              width={170}
-              height={60}
+              width={120}
+              height={37}
               duration={2}
               baseColor="#3B3B3B"
               borderRadius="0xp"
               highlightColor="#525252"
             />
             <Skeleton
-              width={200}
-              height={60}
+              width={150}
+              height={37}
               duration={2}
               baseColor="#3B3B3B"
               borderRadius="0xp"

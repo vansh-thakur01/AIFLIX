@@ -43,10 +43,10 @@ const Browse = () => {
     <div className="">
       <div className="relavite">
         <div
-          className={`p-3 pt-2 px-11 fixed flex top-0 left-0 right-0 bottom-0 transition-all duration-500 justify-center z-15 ${
+          className={` px-11 fixed flex top-0 left-0 right-0 bottom-0 transition-all duration-500 justify-center z-15 ${
             scrolledHalf
-              ? "bg-black/90 h-26"
-              : " h-27 bg-gradient-to-b from-black to-transparent to-[95%]"
+              ? "bg-black/90 h-20"
+              : " h-20 bg-gradient-to-b from-black to-transparent to-[95%]"
           }`}
         >
           <Header loggedIn={true} />

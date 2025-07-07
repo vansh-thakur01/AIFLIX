@@ -9,10 +9,8 @@ export const useUpcomingMovies = () => {
 
   const getMovies = async function () {
     try {
-      console.log("upo");
       const response = await fetch(UPCOMING_MOVIES_API+"?language=en-US&page=1", OPTIONSOBJ);
       const data = await response.json();
-      console.log(data,"up");
       dispatch(addUpcomingMovies(data));
     } catch (err) {
       console.log(err.message);

@@ -4,7 +4,7 @@ import { VideoTitleShimmer } from './VideoTitleShimmer'
 
 export const BrowseMainContainerShimmer = () => {
   return (
-    <div>
+    <div className=''>
         <VideoBgShimmer/>
         <VideoTitleShimmer/>
     </div>
