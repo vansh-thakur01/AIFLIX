@@ -143,7 +143,7 @@ export const SearchButton = () => {
         } transition-all duration-500`}
       >
         <button
-          onClick={handleShowInputBox}
+          onClick={()=>!showInputBox && handleShowInputBox()}
           className={`text-[13.5px] text-white/95 pb-1 cursor-pointer font-semibold`}
         >
           {lang[selectedLang].Search}
