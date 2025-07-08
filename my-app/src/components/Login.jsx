@@ -74,8 +74,8 @@ export const Login = () => {
     <div>
       <BasicBgWithHeader Header={() => <Header signin={false} />} shade={5} />
       <div className="bg-black absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-87">
-        <div className="px-14 pb-25 pt-16 w-[500px] h-[600px]">
-          <h2 className="text-amber-50 text-4xl mb-8 font-bold">
+        <div className="px-14 pb-25 pt-12 w-[480px] h-[540px]">
+          <h2 className="text-amber-50 text-4xl mb-7 font-bold">
             {signup ? "Sign Up" : "Sign In"}
           </h2>
           <form onSubmit={(e) => e.preventDefault()} className="z-6 mb-1">
@@ -85,25 +85,25 @@ export const Login = () => {
                 type="text"
                 name="user-name"
                 placeholder="Full name"
-                className="w-full px-5 py-4 mb-6 border-2 bg-gray-950 border-gray-400 rounded text-white text-[17px]"
+                className="w-full px-4 py-4 mb-6 focus:outline-0 border-2 bg-gray-950 border-gray-400 rounded text-white text-[15px]"
               ></input>
             )}
             <input
               type="text"
               name="email"
               placeholder="Email Address"
-              className={`w-full px-5 py-4 mb-3 border-2 bg-gray-950 ${
+              className={`w-full px-4 py-4 mb-2 border-2 bg-gray-950 ${
                 validEmailEvent == null ? "border-red-500" : "border-gray-400"
-              } rounded text-white text-[17px] focus:outline-none`}
+              } rounded text-white text-[15px] focus:outline-none`}
               onFocus={() => setvalidEmailEvent(true)}
               onBlur={handelBlur}
             ></input>
-            <div className="text-red-500 text-[15px] h-1 flex items-center">
+            <div className="text-red-500 text-[14px] h-1 flex items-center">
               {validEmailEvent == null &&
                 "⨂ Please enter a valid email address."}
             </div>
             <div
-              className={`relative w-full px-5 py-4 mt-4 border-2 bg-gray-950 ${
+              className={`relative w-full px-4 py-3 mt-3 border-2 bg-gray-950 ${
                 validPswdEvent == null ? "border-red-500" : "border-gray-400"
               } rounded flex justify-between`}
             >
@@ -111,7 +111,7 @@ export const Login = () => {
                 type={showPswd ? "text" : "password"}
                 name="pswd"
                 placeholder="Passowrd"
-                className="text-white text-[17px] outline-none focus:ring-0 focus:outline-none flex-1"
+                className="text-white py-1 text-[15px] outline-none focus:ring-0 focus:outline-none flex-1"
                 onFocus={() => {
                   setvalidPswdEvent(true), setWrongCredential(null);
                 }}
@@ -125,7 +125,7 @@ export const Login = () => {
                 {showPswd ? "👀" : "🙈"}
               </button>
             </div>
-            <div className="text-red-500 text-[15px] h-7 flex items-center ">
+            <div className="text-red-500 text-[14px] h-6 flex items-center ">
               {(validPswdEvent == null &&
                 "⨂ Password must contain 6 to 16 charaters.") ||
                 (wrongCredential && wrongCredential)}
@@ -133,12 +133,12 @@ export const Login = () => {
           </form>
           <button
             type="submit"
-            className="mb-10 w-full px-5 py-3 cursor-pointer bg-red-700 rounded font-semibold text-white text-lg opacity-100"
+            className="mb-5 w-full px-5 py-2 cursor-pointer bg-red-700 rounded font-semibold text-white text-lg opacity-100"
             onClick={handelSignInSignUp}
           >
             {signup ? "Sign Up" : "Sign In"}
           </button>
-          <div className="text-[17px] ">
+          <div className="text-[16px] ">
             <p className="text-blue-100">
               {signup ? "Already have account?" : "New to Netflix?"}
               <span

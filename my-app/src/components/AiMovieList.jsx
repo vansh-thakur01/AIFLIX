@@ -71,7 +71,7 @@ export const AiMovieList = () => {
               ref={searchText}
               type="text"
               placeholder={lang[selectedLang].aiSearchPlaceHolder}
-              className={`focuse text-gray-200 text-[17px] min-w-[127rem]  focus:border-none border-none focus:ring-0 outline-none focus:outline-none caret-white ${
+              className={`focuse text-gray-200 text-[17px] min-w-[108rem]  focus:border-none border-none focus:ring-0 outline-none focus:outline-none caret-white ${
                 selectedLang === "hindi" && "text-[17px]"
               }`}
             ></input>
